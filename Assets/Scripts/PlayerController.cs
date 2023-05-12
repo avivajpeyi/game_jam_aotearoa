@@ -8,8 +8,12 @@ using UnityEngine.SceneManagement;
 [RequireComponent(typeof(Rigidbody))]
 public class PlayerController : MonoBehaviour
 {
+
     
-    
+    public float jumpAmount = 35;
+    public float currentGravityScale = 10;
+    public float gravityScale = 10;
+    public float fallingGravityScale = 40;
 
     bool canJump = true; // for 2d movement
     bool canMoveSideways = true; // for 3d movement
@@ -26,7 +30,6 @@ public class PlayerController : MonoBehaviour
     [SerializeField] float horizontalMultiplier = 2;
 
 
-
     float travelDistance = 0; // distance travelled from start
     Vector3 startPos;
 
@@ -39,20 +42,23 @@ public class PlayerController : MonoBehaviour
     private void FixedUpdate()
     {
         if (!alive) return;
-        
+
         // always move forward
         Vector3 forwardMove = transform.forward * speed * Time.fixedDeltaTime;
         Vector3 horizontalMove = Vector3.zero;
-        
-        
+
+
         if (canMoveSideways)
         {
             horizontalMove = transform.right * horizontalInput * speed *
-                                     Time.fixedDeltaTime * horizontalMultiplier;
+                             Time.fixedDeltaTime * horizontalMultiplier;
         }
 
+
+        rb.AddForce(Physics.gravity * (currentGravityScale - 1) * rb.mass);
+
         // move sideways
-        
+
         rb.MovePosition(rb.position + forwardMove + horizontalMove);
     }
 
@@ -60,6 +66,18 @@ public class PlayerController : MonoBehaviour
     private void Jump()
     {
         Debug.Log("Jump boi");
+        if (Input.GetKeyDown(KeyCode.Space))
+        {
+            rb.AddForce(Vector2.up * jumpAmount, ForceMode.Impulse);
+        }
+        if(rb.velocity.y >= 0)
+        {
+            currentGravityScale = gravityScale;
+        }
+        else if (rb.velocity.y < 0)
+        {
+            currentGravityScale = fallingGravityScale;
+        }
     }
 
     private void Update()
@@ -70,15 +88,14 @@ public class PlayerController : MonoBehaviour
         {
             Jump();
         }
-        
-        
+
+
         if (transform.position.y < -5)
         {
             Die();
         }
-        
+
         travelDistance = Vector3.Distance(startPos, transform.position);
-        
     }
 
     public void Die()
