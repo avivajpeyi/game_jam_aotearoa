@@ -7,22 +7,18 @@ public class Pickup : MonoBehaviour
 
     private void OnTriggerEnter (Collider other)
     {
-        if (other.gameObject.GetComponent<Obstacle>() != null) {
-            Destroy(gameObject);
-            return;
-        }
-
-        // Check that the object we collided with is the player
-        if (other.gameObject.name != "Player") {
-            return;
-        }
-
-        // TODO: increase the time on the timer here
+        Debug.Log("Triggered!");
         
-
-        // Destroy this coin object
-        // TODO: add particle/sound fx
-        Destroy(gameObject);
+        if (other.gameObject.GetComponent<Obstacle>() != null) {
+            // If i fucked up and placed the pickup inside an obstacle lol
+            Destroy(gameObject);
+        }
+        // Check that the object we collided with is the player
+        else if (other.gameObject.CompareTag("Player")) {
+            // TODO: increase the time on the timer here
+            // TODO: add particle/sound fx
+            Destroy(gameObject);
+        }
     }
     
 }

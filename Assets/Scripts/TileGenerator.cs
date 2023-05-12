@@ -6,28 +6,33 @@ using UnityEngine;
 
 public class TileGenerator : MonoBehaviour
 {
+    private int count=0; 
     
+     
     
-    [SerializeField] private bool testMode; // set this to true to test the tile generator
     [SerializeField] public float yPos = 0.0f;
     [SerializeField] private int initialTiles = 15;
     [SerializeField] GameObject groundTile;
     Vector3 nextSpawnPoint = Vector3.zero;
 
+    // set this to true to test the tile generator
+    public bool testMode; // public so we can change it in script 1 location
+    
+    
     /// <summary>
     /// Spawn new tile at the next spawn point.
     /// </summary>
     /// <param name="spawnCrap"></param>
-    ///  s
     public void SpawnTile (bool spawnCrap)
     {
+        count++;
         GameObject temp = Instantiate(groundTile, nextSpawnPoint, Quaternion.identity);
-        nextSpawnPoint = temp.transform.GetChild(1).transform.position;
-
-        if (spawnCrap) {
-            temp.GetComponent<FloorTile>().SpawnObstacle();
-            temp.GetComponent<FloorTile>().SpawnPickups();
-        }
+        FloorTile tile = temp.GetComponent<FloorTile>();
+        tile.Initialise(spawner:this, spawnCrap:spawnCrap);
+        // nextSpawnPoint = temp.transform.GetChild(1).transform.position;
+        
+        // Update the next spawn point
+        nextSpawnPoint = tile.GetNextSpawnPoint(); 
     }
 
     private void Start () {
@@ -38,11 +43,11 @@ public class TileGenerator : MonoBehaviour
                 SpawnTile(true);
             }
         }
-        
-        if (testMode) {
-            if (Input.GetKeyDown(KeyCode.Space)) {
-                SpawnTile(true);
-            }
+    }
+    
+    private void Update () {
+        if (testMode && Input.GetKeyDown(KeyCode.O)) {
+            SpawnTile(true);
         }
     }
 }

@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class Obstacle : MonoBehaviour
 {
+    bool testMode = true;
     private PlayerController _player;
 
     private void Start () {
@@ -12,7 +13,10 @@ public class Obstacle : MonoBehaviour
 
     private void OnCollisionEnter (Collision collision)
     {
-        if (collision.gameObject.name == "Player") {
+        if (testMode)
+            return;
+        
+        if (collision.transform.CompareTag("Player")) {
             // Kill the player
             Debug.Log("Collided into an obstacle!");
             _player.Die();

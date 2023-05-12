@@ -2,34 +2,62 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-
-// ensure that a child object with the name "NextSpawnPoint" is present
+/// <summary>
+/// FloorTile contains all the data and functionality for a FloorTile 
+/// These are only instantiated by the TileGenerator.
+/// 
+/// Must have a child objects:
+///     "NextSpawnPoint" -- transform for the next tile to spawn
+///     "ObstacleSpwnPtLeft" -- transform for the left obstacle spawn point
+///     "ObstacleSpwnPtMid" -- transform for the middle obstacle spawn point
+///     "ObstacleSpwnPtRight" -- transform for the right obstacle spawn point
+///
+/// Must have a collider to detect when the player has left the tile
+/// The collider also defines the area that pickups and obstacles can spawn.
+///
+/// The layer of the collider must be set to "Floor" so that the player
+/// can walk on it.
+/// </summary>
+[RequireComponent(typeof(Collider))]
 public class FloorTile : MonoBehaviour
 {
     Collider _collider;
     TileGenerator _spawner;
     private GameObject _pickupPrefab;
     private GameObject _obstaclePrefab;
-    private Transform nextSpawnPoint;
+    private Transform _nextSpawnPoint;
+    private List<Transform> _obstacleSpawnPoints = new List<Transform>();
+    private int numPickups = 1;
 
 
-    private void Start()
+    public void Initialise(TileGenerator spawner, bool spawnCrap = true,
+        int numPickups = 1)
     {
+        _spawner = spawner;
         _collider = GetComponent<Collider>();
-        _spawner = GameObject.FindObjectOfType<TileGenerator>();
         _pickupPrefab = Resources.Load<GameObject>("Pickup");
         _obstaclePrefab = Resources.Load<GameObject>("Obstacle");
-        nextSpawnPoint = transform.Find("NextSpawnPoint");
-        if (nextSpawnPoint == null)
+        _nextSpawnPoint = transform.Find("NextSpawnPoint");
+        _obstacleSpawnPoints.Add(transform.Find("ObstacleSpwnPtLeft"));
+        _obstacleSpawnPoints.Add(transform.Find("ObstacleSpwnPtMid"));
+        _obstacleSpawnPoints.Add(transform.Find("ObstacleSpwnPtRight"));
+        this.numPickups = numPickups;
+        if (spawnCrap)
         {
-            Debug.LogError(
-                "FloorTile: No child object with the name 'NextSpawnPoint' found!");
+            SpawnObstacle();
+            SpawnPickups();
+        }
+
+        foreach (Transform spawnPoint in _obstacleSpawnPoints)
+        {
+            Destroy(spawnPoint.gameObject);
         }
     }
 
+
     public Vector3 GetNextSpawnPoint()
     {
-        return nextSpawnPoint.position;
+        return _nextSpawnPoint.position;
     }
 
     private void OnTriggerExit(Collider other)
@@ -40,18 +68,22 @@ public class FloorTile : MonoBehaviour
 
     public void SpawnObstacle()
     {
-        // Choose a random point to spawn the obstacle
-        int obstacleSpawnIndex = Random.Range(2, 5);
-        Transform spawnPoint = transform.GetChild(obstacleSpawnIndex).transform;
-
-        // Spawn the obstace at the position
-        Instantiate(_obstaclePrefab, spawnPoint.position, Quaternion.identity, transform);
+        // 0 to N-1 where N is the number of spawn points (so at least 1 exit)
+        int numObstacles = Random.Range(0, _obstacleSpawnPoints.Count - 1);
+        for (int i = 0; i < numObstacles; i++)
+        {
+            int obstacleSpawnIndex = Random.Range(0, _obstacleSpawnPoints.Count);
+            Transform spawnPoint = _obstacleSpawnPoints[obstacleSpawnIndex];
+            Instantiate(_obstaclePrefab, spawnPoint.position, Quaternion.identity,
+                transform);
+            _obstacleSpawnPoints.RemoveAt(obstacleSpawnIndex);
+        }
     }
 
 
-    public void SpawnPickups(int pickupsToSpawn = 10)
+    public void SpawnPickups()
     {
-        for (int i = 0; i < pickupsToSpawn; i++)
+        for (int i = 0; i < numPickups; i++)
         {
             GameObject temp = Instantiate(_pickupPrefab, transform);
             temp.transform.position = GetRandomPointInCollider();
