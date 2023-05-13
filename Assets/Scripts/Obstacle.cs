@@ -10,6 +10,8 @@ public class Obstacle : MonoBehaviour
     private void Start () {
         _player = GameObject.FindObjectOfType<PlayerController>();
     }
+    
+    
 
     private void OnCollisionEnter (Collision collision)
     {
@@ -19,7 +21,6 @@ public class Obstacle : MonoBehaviour
         if (collision.transform.CompareTag("Player")) {
             // Kill the player
             Debug.Log("Collided into an obstacle!");
-            _player.Die();
         }
     }
 }

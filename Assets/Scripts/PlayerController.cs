@@ -23,6 +23,10 @@ public class PlayerController : MonoBehaviour
     bool canMoveSideways = true; // for 3d movement
 
 
+    public float[] floorBounds = {-5, 5};
+
+    
+    
     // TODO: maybe make the player a static variable so we don't have to find it every time?
 
     bool alive = true;
@@ -42,6 +46,9 @@ public class PlayerController : MonoBehaviour
 
     [SerializeField] float scoreBase = 1;
 
+    
+    
+    
 
     private void Start()
     {
@@ -93,11 +100,24 @@ public class PlayerController : MonoBehaviour
         }
 
 
+        
+        
         rb.AddForce(Physics.gravity * (currentGravityScale - 1) * rb.mass);
 
         // move sideways
 
         rb.MovePosition(rb.position + forwardMove + horizontalMove);
+        
+        
+        // prevent player for going past the edge of the map
+        if (transform.position.x <= floorBounds[0])
+        {
+            transform.position = new Vector3(floorBounds[0], transform.position.y, transform.position.z);
+        }
+        else if (transform.position.x >= floorBounds[1])
+        {
+            transform.position = new Vector3(floorBounds[1], transform.position.y, transform.position.z);
+        }
     }
 
 

@@ -6,15 +6,17 @@ using UnityEngine;
 public class Pickup : MonoBehaviour
 {
     bool isFor3dTimer = false;
+    
+    
+    
 
 
     public void Start()
     {
-        isFor3dTimer = true; // TODO: set using GameManager.is3d; 
-
-
+        
+        
+        isFor3dTimer = GameManager.is3D; // TODO: set using GameManager.is3d; 
         Material m = GetComponent<Renderer>().material;
-        this.isFor3dTimer = isFor3dTimer;
         // hacky change the colour of the pickup to red if it's for the 3d timer
         if (isFor3dTimer)
         {

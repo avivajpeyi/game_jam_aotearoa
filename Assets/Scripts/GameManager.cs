@@ -14,7 +14,7 @@ public class GameManager : MonoBehaviour
     }
 
     [SerializeField] bool testMode = true;
-    [SerializeField] static bool is3D = true;
+    [SerializeField] public  static bool is3D = true;
 
     // Start is called before the first frame update
     void Start()
