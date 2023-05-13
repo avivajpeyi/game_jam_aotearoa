@@ -1109,6 +1109,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _score: 0
   gameOverUI: {fileID: 25363006}
+  tutorialUI: {fileID: 1066470655}
+  preStart: 1
 --- !u!4 &1125145139
 Transform:
   m_ObjectHideFlags: 0
