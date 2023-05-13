@@ -29,6 +29,8 @@ public class PlayerController : MonoBehaviour
 
     public float distanceToCheck = 2f;
     public RaycastHit hit;
+    [SerializeField] public Transform[] isGroundedPtsFront;
+    [SerializeField] public Transform[] isGroundedPtsBack;
 
 
     public float[] floorBounds = { -5, 5 };
@@ -138,12 +140,6 @@ public class PlayerController : MonoBehaviour
         rb.AddForce((currentGravityScale - 1) * rb.mass * Physics.gravity);
     }
 
-    void CheckGrounded()
-    {
-        Ray ray = new Ray(transform.position, Vector3.down);
-        isGrounded = Physics.Raycast(ray, out hit, distanceToCheck);
-    }
-
 
     public void SwitchTo2d()
     {
@@ -163,6 +159,29 @@ public class PlayerController : MonoBehaviour
         col3d.enabled = true;
     }
 
+
+    void CheckGrounded()
+    {
+        // Just the floor layermake
+        LayerMask mask = 1<< LayerMask.GetMask("Floor");
+        bool front = Physics.Linecast(isGroundedPtsFront[0].position,
+            isGroundedPtsFront[1].position, mask);
+        bool back = Physics.Linecast(isGroundedPtsBack[0].position,
+            isGroundedPtsBack[1].position, mask);
+        isGrounded = front || back;
+    }
+
+    private void OnDrawGizmos()
+    {
+        if (!alive)
+            return;
+        // if Grounded, draw a green, otherwise red, sphere above player
+        Gizmos.color = isGrounded ? Color.green : Color.red;
+        Gizmos.DrawSphere(transform.position + Vector3.up * distanceToCheck, 0.1f);
+        Gizmos.color = Color.magenta;
+        Gizmos.DrawLine(isGroundedPtsFront[0].position, isGroundedPtsFront[1].position);
+        Gizmos.DrawLine(isGroundedPtsBack[0].position, isGroundedPtsBack[1].position);
+    }
 
     private void Jump()
     {
@@ -190,13 +209,5 @@ public class PlayerController : MonoBehaviour
         col3d.enabled = false;
         col2d.enabled = false;
         Debug.Log("get rekt u fokin noob, u ded");
-    }
-
-
-    private void OnDrawGizmos()
-    {
-        // if Grounded, draw a green, otherwise red, sphere above player
-        Gizmos.color = isGrounded ? Color.green : Color.red;
-        Gizmos.DrawSphere(transform.position + Vector3.up * distanceToCheck, 0.1f);
     }
 }
