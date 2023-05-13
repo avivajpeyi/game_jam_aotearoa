@@ -55,14 +55,18 @@ public class GameManager : MonoBehaviour
         // TODO: 
         if (testMode)
         {
-            if (!is3D && Input.GetKeyDown(KeyCode.Alpha3)) // the 3 key
+            if (Input.GetKeyDown(KeyCode.F)) // the 3 key
             {
-                Debug.Log("Switch to 3D mode");
-                ScriptableEvents.TriggerActivate3D();
-            }
-            else if (is3D && Input.GetKeyDown(KeyCode.Alpha2))
-            {
-                ScriptableEvents.TriggerActivate2D();
+                if (is3D)
+                {
+                    Debug.Log("Switch to 2D mode");
+                    ScriptableEvents.TriggerActivate2D();
+                }
+                else
+                {
+                    Debug.Log("Switch to 3D mode");
+                    ScriptableEvents.TriggerActivate3D();
+                }
             }
         }
 
@@ -76,8 +80,6 @@ public class GameManager : MonoBehaviour
         {
             ScriptableEvents.TriggerStartGame();
         }
-
-            
     }
 
     void AddScore(float scoreToAdd)

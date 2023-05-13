@@ -311,6 +311,86 @@ PrefabInstance:
       propertyPath: m_LocalPosition.y
       value: -0.059999943
       objectReference: {fileID: 0}
+    - target: {fileID: 3584366310474607521, guid: 93462a6e6dca54454ba7f5f1c4b9bd9f, type: 3}
+      propertyPath: speed
+      value: 500
+      objectReference: {fileID: 0}
+    - target: {fileID: 3584366310474607521, guid: 93462a6e6dca54454ba7f5f1c4b9bd9f, type: 3}
+      propertyPath: turnLeftRight
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5409557716726581925, guid: 93462a6e6dca54454ba7f5f1c4b9bd9f, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5409557716726581925, guid: 93462a6e6dca54454ba7f5f1c4b9bd9f, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5409557716726581925, guid: 93462a6e6dca54454ba7f5f1c4b9bd9f, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5409557717600645598, guid: 93462a6e6dca54454ba7f5f1c4b9bd9f, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5409557717600645598, guid: 93462a6e6dca54454ba7f5f1c4b9bd9f, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5409557717600645598, guid: 93462a6e6dca54454ba7f5f1c4b9bd9f, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5409557717600645598, guid: 93462a6e6dca54454ba7f5f1c4b9bd9f, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5409557717600645598, guid: 93462a6e6dca54454ba7f5f1c4b9bd9f, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5409557717626015092, guid: 93462a6e6dca54454ba7f5f1c4b9bd9f, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5409557717626015092, guid: 93462a6e6dca54454ba7f5f1c4b9bd9f, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5409557717626015092, guid: 93462a6e6dca54454ba7f5f1c4b9bd9f, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5409557717626015092, guid: 93462a6e6dca54454ba7f5f1c4b9bd9f, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5409557717626015092, guid: 93462a6e6dca54454ba7f5f1c4b9bd9f, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5615686207211222555, guid: 93462a6e6dca54454ba7f5f1c4b9bd9f, type: 3}
+      propertyPath: speed
+      value: 500
+      objectReference: {fileID: 0}
+    - target: {fileID: 5615686207211222555, guid: 93462a6e6dca54454ba7f5f1c4b9bd9f, type: 3}
+      propertyPath: turnLeftRight
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5844092000560223902, guid: 93462a6e6dca54454ba7f5f1c4b9bd9f, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5844092000560223902, guid: 93462a6e6dca54454ba7f5f1c4b9bd9f, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5844092000560223902, guid: 93462a6e6dca54454ba7f5f1c4b9bd9f, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 6473154312414460424, guid: 93462a6e6dca54454ba7f5f1c4b9bd9f, type: 3}
       propertyPath: m_RootOrder
       value: 3
@@ -383,7 +463,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ebbcfc1bc91d743deb7dc3eb683a3730, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 20
+  speed: 500
   turnLeftRight: 0
 --- !u!114 &319152552
 MonoBehaviour:
@@ -397,7 +477,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ebbcfc1bc91d743deb7dc3eb683a3730, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 20
+  speed: 500
   turnLeftRight: 0
 --- !u!1 &614052368
 GameObject:
@@ -1155,7 +1235,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _score: 0
   gameOverUI: {fileID: 25363006}
-  tutorialUI: {fileID: 1066470655}
+  tutorialUI: {fileID: 0}
   preStart: 1
 --- !u!4 &1125145139
 Transform:
