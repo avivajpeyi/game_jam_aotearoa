@@ -16,6 +16,7 @@ public class GameManager : MonoBehaviour
 
     [SerializeField] public static bool testMode = true;
     [SerializeField] public  static bool is3D = true;
+    [SerializeField] GameObject gameOverUI;
 
     // Start is called before the first frame update
     void Start()
@@ -25,6 +26,8 @@ public class GameManager : MonoBehaviour
         ScriptableEvents.eventActivate2D += Set2D;
         ScriptableEvents.eventActivate3D += Set3D;
 
+        ScriptableEvents.endGame += GameOver;
+        ScriptableEvents.resetGame =+ Reset;
 
 
         ScriptableEvents.TriggerActivate3D();
@@ -53,6 +56,10 @@ public class GameManager : MonoBehaviour
         ScriptableEvents.eventScore -= AddScore;
         ScriptableEvents.eventActivate2D -= Set2D;
         ScriptableEvents.eventActivate3D -= Set3D;
+
+        ScriptableEvents.endGame -= GameOver;
+        ScriptableEvents.resetGame -= Reset;
+
     }
 
     void AddScore(float scoreToAdd)
@@ -73,5 +80,15 @@ public class GameManager : MonoBehaviour
     void Set2D()
     {
         is3D = false;
+    }
+
+    void GameOver()
+    {
+        gameOverUI.SetActive(true);
+    }
+
+    void Reset()
+    {
+        gameOverUI.SetActive(false);
     }
 }
