@@ -45,7 +45,7 @@ public class Timer : MonoBehaviour
 
     public void AddTime(float time)
     {
-        totalTime = Mathf.Clamp(totalTime - time, 0f, maxTime);
+        totalTime = Mathf.Clamp(totalTime + time, 0f, maxTime);
     }
     
 }
