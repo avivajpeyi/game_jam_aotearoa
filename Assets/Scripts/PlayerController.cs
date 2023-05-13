@@ -5,6 +5,10 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 
 
+/// <summary>
+///
+/// 
+/// </summary>
 [RequireComponent(typeof(Rigidbody))]
 public class PlayerController : MonoBehaviour
 {
@@ -35,10 +39,33 @@ public class PlayerController : MonoBehaviour
     float travelDistance = 0; // distance travelled from start
     Vector3 startPos;
 
+    Collider col2d;
+    Collider col3d;
+    
+    
     private void Start()
     {
         startPos = transform.position;
         rb = GetComponent<Rigidbody>();
+        col3d = GameObject.Find("3dCollider").GetComponent<Collider>();
+        col2d = GameObject.Find("2dCollider").GetComponent<Collider>();
+        SwitchTo3d();
+    }
+    
+    public void SwitchTo2d()
+    {
+        canMoveSideways = false;
+        canJump = true;
+        col2d.enabled = true;
+        col3d.enabled = false;
+    }
+    
+    public void SwitchTo3d()
+    {
+        canMoveSideways = true;
+        canJump = false;
+        col2d.enabled = false;
+        col3d.enabled = true;
     }
 
     private void FixedUpdate()
