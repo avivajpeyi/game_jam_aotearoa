@@ -13,8 +13,43 @@ public class TimerController : MonoBehaviour
         // you can access it in the Start method
 
         // Start the timer initially
+        //timer.StartTimer();
+        //timer2.StartTimer();
+    }
+
+    public void StartGame()
+    {
         timer.StartTimer();
         timer2.StartTimer();
+        timer2.PauseTimer();
+    }
+
+    public void SwitchTimer()
+    {
+        // Not sure how to make this one function 
+    }
+
+    public void AddToTimer1()
+    {
+        timer.AddTime(10f);
+        Debug.Log("Added 10 seconds to the timer.");
+    }
+
+    public void AddToTimer2()
+    {
+        timer2.AddTime(10f);
+        Debug.Log("Added 10 seconds to the timer.");
+    }
+
+    public void Play3DState()
+    {
+        timer2.PauseTimer();
+        timer.ResumeTimer();
+    }
+    public void Play2DState()
+    {
+        timer.PauseTimer();
+        timer2.ResumeTimer();
     }
 
     private void Update()
