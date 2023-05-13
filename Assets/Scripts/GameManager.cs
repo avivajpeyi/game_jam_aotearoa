@@ -19,6 +19,8 @@ public class GameManager : MonoBehaviour
     private bool gameOver;
     [SerializeField] GameObject gameOverUI;
     [SerializeField] GameObject tutorialUI;
+    [SerializeField] GameObject timeout2DUI;
+    [SerializeField] GameObject timeout3DUI;
     [SerializeField] bool preStart = true;
     [SerializeField] string scoreFormat = "000";
 
@@ -36,6 +38,8 @@ public class GameManager : MonoBehaviour
         ScriptableEvents.eventActivate3D += Set3D;
 
 
+        ScriptableEvents.timeout2D += ShowTimeout2D;
+        ScriptableEvents.timeout3D += ShowTimeout3D;
         ScriptableEvents.endGame += GameOver;
         ScriptableEvents.resetGame += Reset;
         ScriptableEvents.startGame += StartGame;
@@ -52,6 +56,8 @@ public class GameManager : MonoBehaviour
         ScriptableEvents.eventActivate2D -= Set2D;
         ScriptableEvents.eventActivate3D -= Set3D;
 
+        ScriptableEvents.timeout2D -= ShowTimeout2D;
+        ScriptableEvents.timeout3D -= ShowTimeout3D;
         ScriptableEvents.endGame -= GameOver;
         ScriptableEvents.resetGame -= Reset;
         ScriptableEvents.startGame -= StartGame;
@@ -136,5 +142,17 @@ public class GameManager : MonoBehaviour
         preStart = false;
         tutorialUI.SetActive(false);
         ScriptableEvents.TriggerActivate3D();
+    }
+
+    void ShowTimeout2D()
+    {
+        timeout2DUI.SetActive(true);
+        timeout3DUI.SetActive(false);
+    }
+
+    void ShowTimeout3D()
+    {
+        timeout3DUI.SetActive(true);
+        timeout2DUI.SetActive(false);
     }
 }
