@@ -4,8 +4,10 @@ using UnityEngine;
 
 public class TimerController : MonoBehaviour
 {
-    public Timer timer;
-    public Timer timer2;
+    public Timer timer3D;
+    public Timer timer2D;
+
+    public float addedTime;
 
     private void Start()
     {
@@ -19,9 +21,9 @@ public class TimerController : MonoBehaviour
 
     public void StartGame()
     {
-        timer.StartTimer();
-        timer2.StartTimer();
-        timer2.PauseTimer();
+        timer3D.StartTimer();
+        timer2D.StartTimer();
+        timer2D.PauseTimer();
     }
 
     public void SwitchTimer()
@@ -29,27 +31,27 @@ public class TimerController : MonoBehaviour
         // Not sure how to make this one function 
     }
 
-    public void AddToTimer1()
+    public void AddToTimer3D()
     {
-        timer.AddTime(10f);
+        timer3D.AddTime(addedTime);
         Debug.Log("Added 10 seconds to the timer.");
     }
 
-    public void AddToTimer2()
+    public void AddToTimer2D()
     {
-        timer2.AddTime(10f);
+        timer2D.AddTime(addedTime);
         Debug.Log("Added 10 seconds to the timer.");
     }
 
     public void Play3DState()
     {
-        timer2.PauseTimer();
-        timer.ResumeTimer();
+        timer2D.PauseTimer();
+        timer3D.ResumeTimer();
     }
     public void Play2DState()
     {
-        timer.PauseTimer();
-        timer2.ResumeTimer();
+        timer3D.PauseTimer();
+        timer2D.ResumeTimer();
     }
 
     private void Update()
@@ -59,40 +61,40 @@ public class TimerController : MonoBehaviour
         // Press the "P" key to pause the timer
         if (Input.GetKeyDown(KeyCode.P))
         {
-            timer.PauseTimer();
+            timer3D.PauseTimer();
             Debug.Log("Timer paused.");
         }
 
         if (Input.GetKeyDown(KeyCode.Q))
         {
-            timer2.PauseTimer();
+            timer2D.PauseTimer();
             Debug.Log("Timer2 paused.");
         }
 
         // Press the "R" key to resume the timer
         if (Input.GetKeyDown(KeyCode.R))
         {
-            timer.ResumeTimer();
+            timer3D.ResumeTimer();
             Debug.Log("Timer resumed.");
         }
 
         // Press the "R" key to resume the timer
         if (Input.GetKeyDown(KeyCode.W))
         {
-            timer2.ResumeTimer();
+            timer2D.ResumeTimer();
             Debug.Log("Timer resumed.");
         }
 
         // Press the "A" key to add 10 seconds to the timer
         if (Input.GetKeyDown(KeyCode.A))
         {
-            timer.AddTime(10f);
+            timer3D.AddTime(addedTime);
             Debug.Log("Added 10 seconds to the timer.");
         }
 
         if (Input.GetKeyDown(KeyCode.E))
         {
-            timer2.AddTime(10f);
+            timer2D.AddTime(addedTime);
             Debug.Log("Added 10 seconds to the timer.");
         }
     }
