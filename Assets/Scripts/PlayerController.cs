@@ -172,14 +172,11 @@ public class PlayerController : MonoBehaviour
     public void Die()
     {
         alive = false;
-        // Restart the game
-        Debug.Log("get rekt u fokin noob");
-        // TODO: maybe make a game manager class to handle this?
-    }
-
-    void Restart()
-    {
-        ScriptableEvents.TriggerResetScore();
-        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+        rb.velocity = Vector3.zero;
+        rb.isKinematic = true;
+        rb.detectCollisions = false;
+        col3d.enabled = false;
+        col2d.enabled = false;
+        Debug.Log("get rekt u fokin noob, u ded");
     }
 }
