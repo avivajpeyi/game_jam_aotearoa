@@ -82,7 +82,7 @@ public class GameManager : MonoBehaviour
             ScriptableEvents.TriggerStartGame();
         }
 
-        scoreUI.SetText(_score.ToString());
+        scoreUI.SetText(_score.ToString("0.00"));
     }
 
     void AddScore(float scoreToAdd)

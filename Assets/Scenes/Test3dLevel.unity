@@ -1292,7 +1292,7 @@ MonoBehaviour:
   _score: 0
   scoreUI: {fileID: 707211437}
   gameOverUI: {fileID: 25363006}
-  tutorialUI: {fileID: 0}
+  tutorialUI: {fileID: 1066470655}
   preStart: 1
 --- !u!4 &1125145139
 Transform:
