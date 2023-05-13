@@ -16,7 +16,6 @@ public class TileGenerator : MonoBehaviour
     Vector3 nextSpawnPoint = Vector3.zero;
 
     // set this to true to test the tile generator
-    public bool testMode; // public so we can change it in script 1 location
     
     
     /// <summary>
@@ -46,7 +45,7 @@ public class TileGenerator : MonoBehaviour
     }
     
     private void Update () {
-        if (testMode && Input.GetKeyDown(KeyCode.O)) {
+        if (GameManager.testMode && Input.GetKeyDown(KeyCode.O)) {
             SpawnTile(true);
         }
     }

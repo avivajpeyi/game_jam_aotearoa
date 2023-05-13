@@ -100,17 +100,10 @@ public class Pickup : MonoBehaviour
         {
             // TODO: increase the time on the timer here
             // TODO: add particle/sound fx
-
             if (isFor3dTimer)
-            {
-                // TODO: @nzkieran Start increase 3D timer event
-                Debug.Log("Increase 3d timer");
-            }
+                ScriptableEvents.TriggerAddTime3D();
             else
-            {
-                // TODO: @nzkieran Start increase 3D timer event
-                Debug.Log("Increase 2d timer");
-            }
+                ScriptableEvents.TriggerAddTime2D();
 
             Destroy(gameObject);
         }

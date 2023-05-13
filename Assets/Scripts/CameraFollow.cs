@@ -9,8 +9,6 @@ public class CameraFollow : MonoBehaviour
 
     
 
-    public bool testMode; // public so we can change it in script 1 location
-
     [SerializeField] bool is3D = true;
     [SerializeField] private float lerpTime = 0.15f;
 

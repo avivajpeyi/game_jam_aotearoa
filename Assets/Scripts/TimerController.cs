@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -7,30 +8,27 @@ public class TimerController : MonoBehaviour
     public Timer timer3D;
     public Timer timer2D;
 
-    public float addedTime;
+    public float addedTime = 2f;
 
-    private void Start()
-    {
-        // Assuming the Timer script is attached to the GameController object,
-        // you can access it in the Start method
 
-        // Start the timer initially
-        //timer.StartTimer();
-        //timer2.StartTimer();
-    }
-
-    public void StartGame()
+    public void Start()
     {
         timer3D.StartTimer();
         timer2D.StartTimer();
         timer2D.PauseTimer();
+        ScriptableEvents.eventActivate2D += Play2DState;
+        ScriptableEvents.eventActivate3D += Play3DState;
+        ScriptableEvents.addTime2D += AddToTimer2D;
+        ScriptableEvents.addTime2D += AddToTimer3D;
+        
     }
-
-    public void SwitchTimer()
+    
+    public void OnDestroy()
     {
-        // Not sure how to make this one function 
+        ScriptableEvents.eventActivate2D -= Play2DState;
+        ScriptableEvents.eventActivate3D -= Play3DState;
     }
-
+    
     public void AddToTimer3D()
     {
         timer3D.AddTime(addedTime);
@@ -48,6 +46,7 @@ public class TimerController : MonoBehaviour
         timer2D.PauseTimer();
         timer3D.ResumeTimer();
     }
+
     public void Play2DState()
     {
         timer3D.PauseTimer();
@@ -57,7 +56,14 @@ public class TimerController : MonoBehaviour
     private void Update()
     {
         // For testing purposes, let's check for user input to trigger certain actions
+        if (GameManager.testMode)
+        {
+            TestingLogic();
+        }
+    }
 
+    void TestingLogic()
+    {
         // Press the "P" key to pause the timer
         if (Input.GetKeyDown(KeyCode.P))
         {
