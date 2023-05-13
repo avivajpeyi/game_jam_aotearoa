@@ -20,9 +20,10 @@ public class GameManager : MonoBehaviour
     [SerializeField] GameObject gameOverUI;
     [SerializeField] GameObject tutorialUI;
     [SerializeField] bool preStart = true;
+    [SerializeField] string scoreFormat = "000";
 
-    
-    
+
+
     private float timeAfterGameOver = 0;
     
     
@@ -94,7 +95,7 @@ public class GameManager : MonoBehaviour
             ScriptableEvents.TriggerStartGame();
         }
 
-        scoreUI.SetText(_score.ToString("000"));
+        scoreUI.SetText(_score.ToString(scoreFormat));
     }
     
 

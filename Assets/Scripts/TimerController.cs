@@ -58,19 +58,21 @@ public class TimerController : MonoBehaviour
         if (timer2D.finished)
         {
             ScriptableEvents.TriggerTimeout2D();
+            TriggerGameOver();
         }
 
         if (timer3D.finished)
         {
             ScriptableEvents.TriggerTimeout3D();
+            TriggerGameOver();
         }
+    }
 
-        if (timer3D.finished || timer2D.finished)
-        {
-            ScriptableEvents.TriggerEndGame();
-            Destroy(timer3D);
-            Destroy(timer2D);
-            Destroy(this);
-        }
+    void TriggerGameOver()
+    {
+        ScriptableEvents.TriggerEndGame();
+        Destroy(timer3D);
+        Destroy(timer2D);
+        Destroy(this);
     }
 }
