@@ -18,11 +18,18 @@ public class PlayerController : MonoBehaviour
     public float currentGravityScale = 10;
     public float gravityScale = 10;
     public float fallingGravityScale = 40;
-
+    public static bool isGrounded;
+    public static bool isMovingUp;
+    
     bool canJump = true; // for 2d movement
     bool canMoveSideways = true; // for 3d movement
 
 
+    public float distanceToCheck = 2f;
+    public RaycastHit hit;
+
+    
+    
     public float[] floorBounds = {-5, 5};
 
     
@@ -99,8 +106,6 @@ public class PlayerController : MonoBehaviour
                              Time.fixedDeltaTime * horizontalMultiplier;
         }
 
-
-        
         
         rb.AddForce(Physics.gravity * (currentGravityScale - 1) * rb.mass);
 
@@ -123,19 +128,22 @@ public class PlayerController : MonoBehaviour
 
     private void Jump()
     {
-        Debug.Log("Jump boi");
-        if (Input.GetKeyDown(KeyCode.Space))
+        
+        
+        rb.AddForce(Vector2.up * jumpAmount, ForceMode.Impulse);
+        if (rb.velocity.y > 0)
         {
-            rb.AddForce(Vector2.up * jumpAmount, ForceMode.Impulse);
-        }
-
-        if (rb.velocity.y >= 0)
-        {
+            isMovingUp = true;
             currentGravityScale = gravityScale;
         }
         else if (rb.velocity.y < 0)
         {
+            isMovingUp = false;
             currentGravityScale = fallingGravityScale;
+        }
+        else
+        {
+            currentGravityScale = gravityScale;
         }
     }
 
@@ -143,7 +151,10 @@ public class PlayerController : MonoBehaviour
     {
         horizontalInput = Input.GetAxis("Horizontal");
 
-        if (canJump && Input.GetKeyDown(KeyCode.Space))
+        Ray ray = new Ray(transform.position, Vector3.down);
+        isGrounded = Physics.Raycast(ray, out hit, distanceToCheck);
+        
+        if (canJump && isGrounded && Input.GetKeyDown(KeyCode.Space))
         {
             Jump();
         }
@@ -178,4 +189,8 @@ public class PlayerController : MonoBehaviour
         ScriptableEvents.TriggerResetScore();
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);
     }
+    
+
+    
+    
 }
