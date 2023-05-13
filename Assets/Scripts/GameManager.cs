@@ -26,7 +26,7 @@ public class GameManager : MonoBehaviour
 
 
 
-        ScriptableEvents.eventActivate3D();
+        // ScriptableEvents.eventActivate3D();
     }
 
     // Update is called once per frame
@@ -37,11 +37,11 @@ public class GameManager : MonoBehaviour
         {
             if (!is3D && Input.GetKeyDown(KeyCode.Alpha3)) // the 3 key
             {
-                ScriptableEvents.eventActivate3D();
+                // ScriptableEvents.eventActivate3D();
             }
             else if (is3D && Input.GetKeyDown(KeyCode.Alpha2))
             {
-                ScriptableEvents.eventActivate2D();
+                // ScriptableEvents.eventActivate2D();
             }
         }
     }
