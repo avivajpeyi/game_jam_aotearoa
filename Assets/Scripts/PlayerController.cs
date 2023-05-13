@@ -155,6 +155,7 @@ public class PlayerController : MonoBehaviour
 
     void Restart()
     {
+        ScriptableEvents.TriggerResetScore();
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);
     }
 }

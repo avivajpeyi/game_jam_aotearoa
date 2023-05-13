@@ -79,4 +79,14 @@ public class ScriptableEvents : ScriptableObject
             endGame();
         }
     }
+
+    public delegate void ResetScore();
+    public static event ResetScore resetScore;
+    public static void TriggerResetScore()
+    {
+        if (resetScore != null)
+        {
+            resetScore();
+        }
+    }
 }
