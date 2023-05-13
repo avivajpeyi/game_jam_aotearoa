@@ -86,7 +86,12 @@ public class FloorTile : MonoBehaviour
         for (int i = 0; i < numPickups; i++)
         {
             GameObject temp = Instantiate(_pickupPrefab, transform);
+            bool isFor3d = Random.Range(0, 2) == 0;
+            
             temp.transform.position = GetRandomPointInCollider();
+            if (!isFor3d)
+                temp.transform.position += new Vector3(0, Random.Range(1, 5), 0);
+            temp.GetComponent<Pickup>().Initialise(isFor3d);
         }
     }
 
