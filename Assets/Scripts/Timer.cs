@@ -6,7 +6,7 @@ using UnityEngine;
 public class Timer : MonoBehaviour
 {
     public float totalTime = 10f; // Set the initial time here
-    private float maxTime;
+    public float maxTime = 10f;
     private bool isTimerRunning = false;
     private bool isPaused = false;
     public bool finished;
@@ -14,7 +14,7 @@ public class Timer : MonoBehaviour
 
     void Start()
     {
-        maxTime = totalTime;
+        // maxTime = totalTime;
     }
 
 

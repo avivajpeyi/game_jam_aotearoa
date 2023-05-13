@@ -9,12 +9,19 @@ public class TimerController : MonoBehaviour
     public Timer timer2D;
     public float addedTime = 2f;
 
+    [SerializeField] ParameterController parameterController;
+
 
     public void Start()
     {
         timer3D.StartTimer();
         timer2D.StartTimer();
         timer2D.PauseTimer();
+
+        // intialize timer values
+        // timer2D.totalTime = parameterController.TimerParameters.Timer2DStartTime;
+        // timer3D.totalTime = parameterController.TimerParameters.Timer3DStartTime;
+        // timer2D.maxTime = timer3D.maxTime = parameterController.TimerParameters.TimerMaxTime;
 
         ScriptableEvents.eventActivate2D += Play2DState;
         ScriptableEvents.eventActivate3D += Play3DState;
