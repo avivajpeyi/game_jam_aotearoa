@@ -99,4 +99,14 @@ public class ScriptableEvents : ScriptableObject
             resetGame();
         }
     }
+
+    public delegate void StartGame();
+    public static event StartGame startGame;
+    public static void TriggerStartGame()
+    {
+        if (startGame != null)
+        {
+            startGame();
+        }
+    }
 }

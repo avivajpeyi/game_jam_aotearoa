@@ -17,6 +17,8 @@ public class GameManager : MonoBehaviour
     [SerializeField] public static bool is3D = true;
     private bool gameOver;
     [SerializeField] GameObject gameOverUI;
+    [SerializeField] GameObject tutorialUI;
+    [SerializeField] bool preStart = true;
 
     // Start is called before the first frame update
     void Start()
@@ -29,6 +31,7 @@ public class GameManager : MonoBehaviour
 
         ScriptableEvents.endGame += GameOver;
         ScriptableEvents.resetGame += Reset;
+        ScriptableEvents.startGame += StartGame;
 
 
         ScriptableEvents.TriggerActivate3D();
@@ -42,6 +45,7 @@ public class GameManager : MonoBehaviour
 
         ScriptableEvents.endGame -= GameOver;
         ScriptableEvents.resetGame -= Reset;
+        ScriptableEvents.startGame -= StartGame;
     }
 
 
@@ -66,6 +70,11 @@ public class GameManager : MonoBehaviour
         {
             ScriptableEvents.TriggerResetScore();
             SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+        }
+
+        if (preStart && Input.anyKey)
+        {
+            ScriptableEvents.TriggerStartGame();
         }
 
             
@@ -101,5 +110,11 @@ public class GameManager : MonoBehaviour
     void Reset()
     {
         gameOverUI.SetActive(false);
+    }
+
+    void StartGame()
+    {
+        preStart = false;
+        tutorialUI.SetActive(false);
     }
 }
