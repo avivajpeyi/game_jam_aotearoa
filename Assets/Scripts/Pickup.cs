@@ -6,7 +6,7 @@ using Random = System.Random;
 
 public class Pickup : MonoBehaviour
 {
-    bool isFor3dTimer = false;
+    bool in3DMode = false;
     
     bool isHidden = false;
     private Collider col;
@@ -17,7 +17,7 @@ public class Pickup : MonoBehaviour
 
     private void OnDestroy()
     {
-        if (isFor3dTimer)
+        if (in3DMode)
         {
             ScriptableEvents.eventActivate2D -= Hide;
             ScriptableEvents.eventActivate3D -= Show;    
@@ -35,20 +35,20 @@ public class Pickup : MonoBehaviour
         col = GetComponent<Collider>();
         rend = GetComponent<Renderer>();
         m = rend.material;
-        isFor3dTimer = isFor3d;
+        in3DMode = isFor3d;
         
         Hide();
-        if (GameManager.is3D && isFor3dTimer)
+        if (GameManager.is3D && in3DMode)
         {
             Show();
         }
-        else if  (!GameManager.is3D && !isFor3dTimer)
+        else if  (!GameManager.is3D && !in3DMode)
         {
             Show();
         }
 
         // hacky change the colour of the pickup to red if it's for the 3d timer
-        if (isFor3dTimer)
+        if (in3DMode)
         {
             m.color = Color.red;
         }
@@ -58,7 +58,7 @@ public class Pickup : MonoBehaviour
         }
         
         
-        if (isFor3dTimer)
+        if (in3DMode)
         {
             ScriptableEvents.eventActivate2D += Hide;
             ScriptableEvents.eventActivate3D += Show;    
@@ -100,10 +100,10 @@ public class Pickup : MonoBehaviour
         {
             // TODO: increase the time on the timer here
             // TODO: add particle/sound fx
-            if (isFor3dTimer)
-                ScriptableEvents.TriggerAddTime3D();
-            else
+            if (in3DMode)
                 ScriptableEvents.TriggerAddTime2D();
+            else
+                ScriptableEvents.TriggerAddTime3D();
 
             Destroy(gameObject);
         }
