@@ -99,13 +99,26 @@ public class CameraFollow : MonoBehaviour
     public void SwitchTo3D()
     {
         is3D = true;
-        StartLerpCameraCoroutine(offset3D, rotation3D, perspective3d);
+        // 
+        Vector3 targetPos = new Vector3(
+            offset3D.x,
+            _player.position.y + offset3D.y,
+            _player.position.z + offset3D.z
+        );
+
+        StartLerpCameraCoroutine(targetPos, rotation3D, perspective3d);
     }
 
     public void SwitchTo2D()
     {
         is3D = false;
-        StartLerpCameraCoroutine(offset2D, rotation2D, perspective2d);
+        Vector3 targetPos = new Vector3(
+            _player.position.x + offset2D.x,
+            offset2D.y,
+            _player.position.z + offset2D.z
+        );
+        
+        StartLerpCameraCoroutine(targetPos, rotation2D, perspective2d);
     }
 
     private Coroutine StartLerpCameraCoroutine(Vector3 targetPos, Vector3 targetRot,
