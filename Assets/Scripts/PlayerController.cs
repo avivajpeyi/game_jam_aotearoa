@@ -141,7 +141,7 @@ public class PlayerController : MonoBehaviour
 
     public void Score()
     {
-        ScriptableEvents.OnScoreEvent(scoreBase * Time.deltaTime);
+        ScriptableEvents.TriggerScoreEvent(scoreBase * Time.deltaTime);
     }
 
     public void Die()
