@@ -16,23 +16,23 @@ public class ScriptableEvents : ScriptableObject
         }
     }
 
-    public delegate void TimerAActive();
-    public event TimerAActive eventTimerAActive;
+    public delegate void DDActive();
+    public event DDActive eventDDActive;
     public void OnTimerAActive()
     {
-        if (eventTimerAActive != null)
+        if (eventDDActive != null)
         {
-            eventTimerAActive();
+            eventDDActive();
         }
     }
 
-    public delegate void TimerBActive();
-    public event TimerBActive eventTimerBActive;
+    public delegate void DDDActive();
+    public event DDDActive eventDDDActive;
     public void OnTimerBActive()
     {
-        if (eventTimerBActive != null)
+        if (eventDDDActive != null)
         {
-            eventTimerBActive();
+            eventDDDActive();
         }
     }
 }
