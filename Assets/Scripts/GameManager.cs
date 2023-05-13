@@ -4,8 +4,8 @@ using UnityEngine;
 
 public class GameManager : MonoBehaviour
 {
-    [SerializeField] int _score = 0;
-    public int Score
+    [SerializeField] float _score = 0;
+    public float Score
     {
         get 
         {
@@ -53,8 +53,14 @@ public class GameManager : MonoBehaviour
         ScriptableEvents.eventActivate3D -= Set3D;
     }
 
-    void AddScore(int scoreToAdd) {
+    void AddScore(float scoreToAdd)
+    {
         _score += scoreToAdd;
+    }
+
+    void ResetScore()
+    {
+        _score = 0;
     }
 
     void Set3D()

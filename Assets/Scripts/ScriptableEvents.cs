@@ -5,10 +5,10 @@ using UnityEngine;
 [CreateAssetMenu(fileName = "SOEvents", menuName = "SOs/Events")]
 public class ScriptableEvents : ScriptableObject
 {
-    public delegate void Score(int scoreToAdd);
+    public delegate void Score(float scoreToAdd);
     public static event Score eventScore;
 
-    public static void OnScoreEvent(int scoreToAdd)
+    public static void OnScoreEvent(float scoreToAdd)
     {
         if (eventScore != null)
         {
@@ -36,13 +36,23 @@ public class ScriptableEvents : ScriptableObject
         }
     }
 
-    public delegate void AddTime2D();
+    public delegate void AddTime2D(float timeToAdd);
     public static event AddTime2D addTime2D;
-    public static void OnAddTime2D()
+    public static void OnAddTime2D(float timeToAdd)
     {
         if (addTime2D != null)
         {
-            addTime2D();
+            addTime2D(timeToAdd);
+        }
+    }
+
+    public delegate void AddTime3D(float timeToAdd);
+    public static event AddTime3D addTime3D;
+    public static void OnAddTime3D(float timeToAdd)
+    {
+        if (addTime3D != null) 
+        {
+            addTime3D(timeToAdd);
         }
     }
 }
