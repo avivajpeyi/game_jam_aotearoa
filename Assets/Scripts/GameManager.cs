@@ -20,6 +20,11 @@ public class GameManager : MonoBehaviour
     [SerializeField] GameObject tutorialUI;
     [SerializeField] bool preStart = true;
 
+    
+    
+    private float timeAfterGameOver = 0;
+    
+    
     // Start is called before the first frame update
     void Start()
     {
@@ -70,10 +75,15 @@ public class GameManager : MonoBehaviour
             }
         }
 
-        if (gameOver && Input.anyKey)
+        if (gameOver)
         {
-            ScriptableEvents.TriggerResetScore();
-            SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+            timeAfterGameOver += Time.deltaTime;
+            if (timeAfterGameOver > 1f && Input.anyKey)
+            {
+                ScriptableEvents.TriggerResetGame();
+                Time.timeScale = 0.01f;
+                SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+            }
         }
 
         if (preStart && Input.anyKey)
@@ -81,6 +91,8 @@ public class GameManager : MonoBehaviour
             ScriptableEvents.TriggerStartGame();
         }
     }
+    
+
 
     void AddScore(float scoreToAdd)
     {
@@ -106,7 +118,6 @@ public class GameManager : MonoBehaviour
     {
         gameOverUI.SetActive(true);
         gameOver = true;
-        Time.timeScale = 0.01f;
     }
 
     void Reset()
