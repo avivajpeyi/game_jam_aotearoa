@@ -21,7 +21,7 @@ public class CameraPerspectiveChanger : MonoBehaviour
     [SerializeField] private float fov = 60f;
     [SerializeField] private float near = .3f;
     [SerializeField] private float far = 1000f;
-    [SerializeField] private float orthographicSize = 5f;
+    [SerializeField] private float orthographicSize = 10f;
     [SerializeField] private float aspect;
     [SerializeField] private bool orthoOn;
 

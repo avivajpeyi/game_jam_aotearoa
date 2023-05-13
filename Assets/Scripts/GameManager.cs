@@ -56,27 +56,27 @@ public class GameManager : MonoBehaviour
         ScriptableEvents.startGame -= StartGame;
     }
 
+    
 
     // Update is called once per frame
     void Update()
     {
         // TODO: 
-        if (testMode)
+
+        if (Input.GetKeyDown(KeyCode.F)) // the 3 key
         {
-            if (Input.GetKeyDown(KeyCode.F)) // the 3 key
+            if (is3D)
             {
-                if (is3D)
-                {
-                    Debug.Log("Switch to 2D mode");
-                    ScriptableEvents.TriggerActivate2D();
-                }
-                else
-                {
-                    Debug.Log("Switch to 3D mode");
-                    ScriptableEvents.TriggerActivate3D();
-                }
+                Debug.Log("Switch to 2D mode");
+                ScriptableEvents.TriggerActivate2D();
+            }
+            else
+            {
+                Debug.Log("Switch to 3D mode");
+                ScriptableEvents.TriggerActivate3D();
             }
         }
+        
 
         if (gameOver)
         {

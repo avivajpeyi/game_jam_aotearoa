@@ -11,14 +11,13 @@ GameObject:
   - component: {fileID: 737561548}
   - component: {fileID: 737561551}
   - component: {fileID: 737561550}
-  - component: {fileID: 737561549}
   m_Layer: 0
   m_Name: 3D Chimkin
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &737561548
 Transform:
   m_ObjectHideFlags: 0
@@ -27,8 +26,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 737561547}
   m_LocalRotation: {x: 0, y: 0.70710677, z: -0.70710677, w: 0}
-  m_LocalPosition: {x: 0, y: 2.177, z: -0.301}
-  m_LocalScale: {x: 0.10261279, y: 0.10261279, z: 0.10261279}
+  m_LocalPosition: {x: 0, y: 2.07, z: -0.301}
+  m_LocalScale: {x: 0.10261279, y: 0.10261279, z: 0.13011302}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1687300149179970492}
@@ -84,20 +83,6 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!64 &737561549
-MeshCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 737561547}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 4
-  m_Convex: 0
-  m_CookingOptions: 30
-  m_Mesh: {fileID: 10209, guid: 0000000000000000e000000000000000, type: 0}
 --- !u!1 &1369149874783743587
 GameObject:
   m_ObjectHideFlags: 0
@@ -393,11 +378,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5ab756e162da544d49dd3acf7c70cd31, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _eventsSO: {fileID: 0}
-  jumpAmount: 35
-  currentGravityScale: 10
-  gravityScale: 10
-  fallingGravityScale: 40
+  nudgeMode: 1
   distanceToCheck: 2
   floorBounds:
   - -5
@@ -835,6 +816,7 @@ PrefabInstance:
     - {fileID: 8075809526911498162, guid: 372fb3279751b4ca1a9f4b48751dff2b, type: 3}
     - {fileID: 1471472250132731106, guid: 372fb3279751b4ca1a9f4b48751dff2b, type: 3}
     - {fileID: 1471472251587006138, guid: 372fb3279751b4ca1a9f4b48751dff2b, type: 3}
+    - {fileID: 1471472251587006137, guid: 372fb3279751b4ca1a9f4b48751dff2b, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 372fb3279751b4ca1a9f4b48751dff2b, type: 3}
 --- !u!4 &983157152523707648 stripped
 Transform:

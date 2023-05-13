@@ -12,7 +12,7 @@ public class TileGenerator : MonoBehaviour
     
     [SerializeField] public float yPos = 0.0f;
     [SerializeField] private int initialTiles = 15;
-    [SerializeField] GameObject groundTile;
+    [SerializeField] TilesList tilesList;
     Vector3 nextSpawnPoint = Vector3.zero;
 
     // set this to true to test the tile generator
@@ -25,6 +25,8 @@ public class TileGenerator : MonoBehaviour
     public void SpawnTile (bool spawnCrap)
     {
         count++;
+        // Randomly select a GroundTile from the list
+        GameObject groundTile = tilesList.GetTilePrefab();
         GameObject temp = Instantiate(groundTile, nextSpawnPoint, Quaternion.identity);
         FloorTile tile = temp.GetComponent<FloorTile>();
         tile.Initialise(spawner:this, spawnCrap:spawnCrap);

@@ -55,7 +55,6 @@ public class PlayerController : MonoBehaviour
         rb = GetComponent<Rigidbody>();
         col3d = GameObject.Find("3dCollider").GetComponent<Collider>();
         col2d = GameObject.Find("2dCollider").GetComponent<Collider>();
-
         ScriptableEvents.eventActivate2D += SwitchTo2d;
         ScriptableEvents.eventActivate3D += SwitchTo3d;
         ScriptableEvents.endGame += Die;
@@ -75,7 +74,22 @@ public class PlayerController : MonoBehaviour
         CheckGrounded();
 
         if (canMoveSideways)
-            horizontalInput = Input.GetAxis("Horizontal");
+        {
+            if (nudgeMode)
+            {
+                if (Input.GetKeyDown(KeyCode.Space))
+                {
+                    if (horizontalInput < 0)
+                        horizontalInput = 1;
+                    else
+                        horizontalInput = -1;
+                }
+            }
+            else
+            {
+                horizontalInput = Input.GetAxis("Horizontal");
+            }
+        }
 
 
         if (canJump && isGrounded && Input.GetKeyDown(KeyCode.Space))
@@ -97,8 +111,8 @@ public class PlayerController : MonoBehaviour
         if (canMoveSideways)
         {
             float x = t.position.x;
-            float minx = floorBounds[0]+2f;
-            float maxx = floorBounds[1]-2f;
+            float minx = floorBounds[0] + 2f;
+            float maxx = floorBounds[1] - 2f;
             hoirzMove = horizontalInput * dx * horizontalMultiplier * t.right;
             if (minx >= x)
             {
