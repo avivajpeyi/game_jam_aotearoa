@@ -42,7 +42,7 @@ public class GameManager : MonoBehaviour
             }
             else if (is3D && Input.GetKeyDown(KeyCode.Alpha2))
             {
-                ScriptableEvents.OnActivate2D();
+                ScriptableEvents.TriggerActivate2D();
             }
         }
     }
