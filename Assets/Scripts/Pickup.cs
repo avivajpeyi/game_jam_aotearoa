@@ -13,7 +13,8 @@ public class Pickup : MonoBehaviour
     private Renderer rend;
     private Material m;
 
-    
+    public GameObject orangeSide;
+    public GameObject blueSide;
 
     private void OnDestroy()
     {
