@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 public class GameManager : MonoBehaviour
@@ -14,11 +15,13 @@ public class GameManager : MonoBehaviour
 
     [SerializeField] public static bool testMode = true;
     [SerializeField] public static bool is3D = true;
+    private bool gameOver;
     [SerializeField] GameObject gameOverUI;
 
     // Start is called before the first frame update
     void Start()
     {
+        Time.timeScale = 1f;
         ScriptableEvents.eventScore += AddScore;
         ScriptableEvents.eventActivate2D += Set2D;
         ScriptableEvents.eventActivate3D += Set3D;
@@ -58,6 +61,14 @@ public class GameManager : MonoBehaviour
                 ScriptableEvents.TriggerActivate2D();
             }
         }
+
+        if (gameOver && Input.anyKey)
+        {
+            ScriptableEvents.TriggerResetScore();
+            SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+        }
+
+            
     }
 
     void AddScore(float scoreToAdd)
@@ -83,6 +94,7 @@ public class GameManager : MonoBehaviour
     void GameOver()
     {
         gameOverUI.SetActive(true);
+        gameOver = true;
         Time.timeScale = 0.01f;
     }
 
