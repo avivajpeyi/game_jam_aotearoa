@@ -130,18 +130,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 2656571939093094450, guid: 93462a6e6dca54454ba7f5f1c4b9bd9f, type: 3}
-      propertyPath: speed
-      value: 10
-      objectReference: {fileID: 0}
-    - target: {fileID: 2656571939093094450, guid: 93462a6e6dca54454ba7f5f1c4b9bd9f, type: 3}
-      propertyPath: horizontalMultiplier
-      value: 1.7
-      objectReference: {fileID: 0}
-    - target: {fileID: 5401559587438879635, guid: 93462a6e6dca54454ba7f5f1c4b9bd9f, type: 3}
-      propertyPath: m_Constraints
-      value: 112
-      objectReference: {fileID: 0}
     - target: {fileID: 6473154312414460424, guid: 93462a6e6dca54454ba7f5f1c4b9bd9f, type: 3}
       propertyPath: m_RootOrder
       value: 3
@@ -188,10 +176,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6473154312414460436, guid: 93462a6e6dca54454ba7f5f1c4b9bd9f, type: 3}
       propertyPath: m_Name
-      value: Player
-      objectReference: {fileID: 0}
-    - target: {fileID: 6473154312414460436, guid: 93462a6e6dca54454ba7f5f1c4b9bd9f, type: 3}
-      propertyPath: m_TagString
       value: Player
       objectReference: {fileID: 0}
     m_RemovedComponents: []
@@ -344,10 +328,6 @@ PrefabInstance:
     - target: {fileID: 6148297232312397735, guid: 1e80cd2b48a314f64a8cf7893106d2e4, type: 3}
       propertyPath: m_Name
       value: TileGenerator
-      objectReference: {fileID: 0}
-    - target: {fileID: 6851454270921051977, guid: 1e80cd2b48a314f64a8cf7893106d2e4, type: 3}
-      propertyPath: testMode
-      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 1e80cd2b48a314f64a8cf7893106d2e4, type: 3}
