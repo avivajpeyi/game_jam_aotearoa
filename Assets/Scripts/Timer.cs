@@ -45,6 +45,7 @@ public class Timer : MonoBehaviour
     private void TimerCompleted()
     {
         // Handle timer completion logic here
+        Debug.Log("Timer has completed. GAME OVER YEEHAW!");
     }
 }
 

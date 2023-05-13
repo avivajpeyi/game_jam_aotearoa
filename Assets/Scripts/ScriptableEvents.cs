@@ -50,23 +50,23 @@ public class ScriptableEvents : ScriptableObject
         }
     }
 
-    public delegate void AddTime2D(float timeToAdd);
+    public delegate void AddTime2D();
     public static event AddTime2D addTime2D;
-    public static void TriggerAddTime2D(float timeToAdd)
+    public static void TriggerAddTime2D()
     {
         if (addTime2D != null)
         {
-            addTime2D(timeToAdd);
+            addTime2D();
         }
     }
 
-    public delegate void AddTime3D(float timeToAdd);
+    public delegate void AddTime3D();
     public static event AddTime3D addTime3D;
-    public static void TriggerAddTime3D(float timeToAdd)
+    public static void TriggerAddTime3D()
     {
         if (addTime3D != null) 
         {
-            addTime3D(timeToAdd);
+            addTime3D();
         }
     }
 
