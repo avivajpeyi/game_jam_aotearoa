@@ -1,31 +1,22 @@
 using System.Collections;
 using System.Collections.Generic;
-using UnityEngine.UI;
 using UnityEngine;
 using TMPro;
 
-public class TimerUI : MonoBehaviour
+public class TimerUI2 : MonoBehaviour
 {
-    private Timer timer;
+    private Timer2 timer;
     private TMP_Text timerText; // Use TMP_Text instead of Text
 
     private void Start()
     {
-        timer = FindObjectOfType<Timer>();
+        timer = FindObjectOfType<Timer2>();
         timerText = GetComponent<TMP_Text>(); // Use GetComponent<TMP_Text>() for TextMeshPro
-
-        if (timerText == null)
-        {
-            Debug.LogError("TimerUI: No TMP_Text component found.");
-        }
     }
 
     private void Update()
     {
-        if (timerText != null)
-        {
-            timerText.text = FormatTime(timer.totalTime);
-        }
+        timerText.text = FormatTime(timer.totalTime);
     }
 
     private string FormatTime(float time)
@@ -37,5 +28,4 @@ public class TimerUI : MonoBehaviour
         return string.Format("{0:00}:{1:00}:{2:000}", minutes, seconds, milliseconds);
     }
 }
-
 
