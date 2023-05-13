@@ -39,8 +39,10 @@ public class PlayerController : MonoBehaviour
 
     Collider col2d;
     Collider col3d;
-    
-    
+
+    [SerializeField] float scoreBase = 1;
+
+
     private void Start()
     {
         startPos = transform.position;
@@ -133,6 +135,11 @@ public class PlayerController : MonoBehaviour
         }
 
         travelDistance = Vector3.Distance(startPos, transform.position);
+    }
+
+    public void Score()
+    {
+        ScriptableEvents.OnScoreEvent(scoreBase * Time.deltaTime);
     }
 
     public void Die()
