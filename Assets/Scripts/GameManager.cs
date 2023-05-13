@@ -26,7 +26,7 @@ public class GameManager : MonoBehaviour
 
 
 
-        ScriptableEvents.OnActivate3D();
+        ScriptableEvents.TriggerActivate3D();
     }
 
     // Update is called once per frame
@@ -38,7 +38,7 @@ public class GameManager : MonoBehaviour
             if (!is3D && Input.GetKeyDown(KeyCode.Alpha3)) // the 3 key
             {
                 Debug.Log("Switch to 3D mode");
-                ScriptableEvents.OnActivate3D();
+                ScriptableEvents.TriggerActivate3D();
             }
             else if (is3D && Input.GetKeyDown(KeyCode.Alpha2))
             {
