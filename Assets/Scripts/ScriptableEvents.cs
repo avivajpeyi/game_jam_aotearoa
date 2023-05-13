@@ -16,23 +16,23 @@ public class ScriptableEvents : ScriptableObject
         }
     }
 
-    public delegate void DDActive();
-    public event DDActive eventDDActive;
-    public void OnTimerAActive()
+    public delegate void Activate2D();
+    public event Activate2D eventActivate2D;
+    public void OnActivate2D()
     {
-        if (eventDDActive != null)
+        if (eventActivate2D != null)
         {
-            eventDDActive();
+            eventActivate2D();
         }
     }
 
-    public delegate void DDDActive();
-    public event DDDActive eventDDDActive;
-    public void OnTimerBActive()
+    public delegate void Activate3D();
+    public event Activate3D eventActivate3D;
+    public void OnActivate3D()
     {
-        if (eventDDDActive != null)
+        if (eventActivate3D != null)
         {
-            eventDDDActive();
+            eventActivate3D();
         }
     }
 }
