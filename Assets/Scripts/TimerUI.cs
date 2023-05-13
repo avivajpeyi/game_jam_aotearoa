@@ -11,7 +11,7 @@ public class TimerUI : MonoBehaviour
 
     private void Start()
     {
-        timer = FindObjectOfType<Timer>();
+        timer = GetComponent<Timer>();
         timerText = GetComponent<TMP_Text>(); // Use GetComponent<TMP_Text>() for TextMeshPro
 
         if (timerText == null)
