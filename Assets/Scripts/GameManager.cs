@@ -40,9 +40,11 @@ public class GameManager : MonoBehaviour
         ScriptableEvents.startGame += StartGame;
 
 
-        ScriptableEvents.TriggerActivate3D();
+        
     }
 
+
+    
     public void OnDestroy()
     {
         ScriptableEvents.eventScore -= AddScore;
@@ -92,7 +94,7 @@ public class GameManager : MonoBehaviour
             ScriptableEvents.TriggerStartGame();
         }
 
-        scoreUI.SetText(_score.ToString("0.00"));
+        scoreUI.SetText(_score.ToString("000"));
     }
     
 
@@ -132,5 +134,6 @@ public class GameManager : MonoBehaviour
     {
         preStart = false;
         tutorialUI.SetActive(false);
+        ScriptableEvents.TriggerActivate3D();
     }
 }

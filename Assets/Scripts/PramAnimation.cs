@@ -12,24 +12,37 @@ public class PramAnimation : MonoBehaviour
     private float originalRotation;
     private bool isMovingUp;
     public float pramBodyOffset = 1f;
-    
+    bool isFrozen = false;
+
     private void Start()
     {
-        // // get child "body" transform by name
         pramBody = transform.Find("body");
         pramWheels = transform.Find("WheelBase");
         originalRotation = pramBody.rotation.eulerAngles.z;
-        
+
+        ScriptableEvents.endGame += Freeze;
     }
-    
-    
+
+    private void OnDestroy()
+    {
+        ScriptableEvents.endGame -= Freeze;
+    }
 
     private void Update()
     {
+        if (isFrozen)
+            return;
+
         if (GameManager.is3D)
             Handle3dAnim();
         else
             Handle2dAnim();
+    }
+
+
+    void Freeze()
+    {
+        isFrozen = true;
     }
 
 
@@ -38,39 +51,44 @@ public class PramAnimation : MonoBehaviour
         float horizontalInput = Input.GetAxis("Horizontal");
         if (horizontalInput != 0)
         {
+            if (!PlayerController.canMoveLeft && horizontalInput < 0)
+            {
+                horizontalInput = 0;
+            }
+            else if (!PlayerController.canMoveRight && horizontalInput > 0)
+            {
+                horizontalInput = 0;
+            }
+
             float targetRotation = originalRotation - tiltAmount * horizontalInput;
             pramBody.rotation = Quaternion.Euler(0f, 0f, targetRotation);
         }
         else
-        {
-            // Reset the rotation when there is no input
-            pramBody.rotation = Quaternion.Euler(0f, 0f, originalRotation);
-        }
+            IdlePos();
     }
 
     void Handle2dAnim()
     {
         if (PlayerController.isGrounded)
         {
-            // Reset the rotation when there is no input
-            pramBody.rotation = Quaternion.Euler(0f, 0f, originalRotation);
-            pramWheels.rotation = Quaternion.Euler(0f, 0f, 0f);
-            // reset the body position
-            pramBody.position = new Vector3(
-                pramBody.position.x,
-                pramWheels.position.y + pramBodyOffset,
-                pramBody.position.z
-                );
+            IdlePos();
         }
         else
         {
-            // move the body up 
-            pramBody.position += Vector3.up * moveUpAmount * Time.deltaTime;
-            // rorate the body along the x axis back 10 degrees
             pramBody.rotation = Quaternion.Euler(-10f, 0f, originalRotation);
-
-            // rotate the wheels off -10 degrees
             pramWheels.rotation = Quaternion.Euler(-5f, 0f, 0f);
+            pramBody.position += moveUpAmount * Time.deltaTime * Vector3.up;
         }
+    }
+
+    void IdlePos()
+    {
+        pramBody.rotation = Quaternion.Euler(0f, 0f, originalRotation);
+        pramWheels.rotation = Quaternion.Euler(0f, 0f, 0f);
+        pramBody.position = new Vector3(
+            pramBody.position.x,
+            pramWheels.position.y + pramBodyOffset,
+            pramBody.position.z
+        );
     }
 }

@@ -14,12 +14,6 @@ public class ChimkinVisible : MonoBehaviour
         ScriptableEvents.eventActivate3D += ActivateChimkin3D;
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
-
     public void OnDestroy()
     {
         ScriptableEvents.eventActivate2D -= ActivateChimkin2D;

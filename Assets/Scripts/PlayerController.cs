@@ -12,15 +12,18 @@ using UnityEngine.SceneManagement;
 [RequireComponent(typeof(Rigidbody))]
 public class PlayerController : MonoBehaviour
 {
-    [SerializeField] ScriptableEvents _eventsSO;
-
-    public float jumpAmount = 35;
-    public float currentGravityScale = 10;
-    public float gravityScale = 10;
-    public float fallingGravityScale = 40;
+    float jumpAmount = 35;
+    float currentGravityScale = 10;
+    float gravityScale = 10;
+    float fallingGravityScale = 40;
     public static bool isGrounded;
+    public static bool canMoveLeft;
+    public static bool canMoveRight;
+    private Transform t;
 
-    bool canJump = true; // for 2d movement
+    public bool nudgeMode = true;
+
+    bool canJump = false; // for 2d movement
     bool canMoveSideways = true; // for 3d movement
 
 
@@ -30,9 +33,6 @@ public class PlayerController : MonoBehaviour
 
     public float[] floorBounds = { -5, 5 };
 
-
-    // TODO: maybe make the player a static variable so we don't have to find it every time?
-
     bool alive = true;
 
     public float speed = 10;
@@ -41,10 +41,7 @@ public class PlayerController : MonoBehaviour
     float horizontalInput;
     [SerializeField] float horizontalMultiplier = 2;
 
-
-    float travelDistance = 0; // distance travelled from start
     Vector3 startPos;
-
     Collider col2d;
     Collider col3d;
 
@@ -53,11 +50,11 @@ public class PlayerController : MonoBehaviour
 
     private void Start()
     {
-        startPos = transform.position;
+        t = transform;
+        startPos = t.position;
         rb = GetComponent<Rigidbody>();
         col3d = GameObject.Find("3dCollider").GetComponent<Collider>();
         col2d = GameObject.Find("2dCollider").GetComponent<Collider>();
-        // SwitchTo3d();
 
         ScriptableEvents.eventActivate2D += SwitchTo2d;
         ScriptableEvents.eventActivate3D += SwitchTo3d;
@@ -71,9 +68,74 @@ public class PlayerController : MonoBehaviour
         ScriptableEvents.endGame -= Die;
     }
 
+
+    private void Update()
+    {
+        if (!alive) return;
+        CheckGrounded();
+
+        if (canMoveSideways)
+            horizontalInput = Input.GetAxis("Horizontal");
+
+
+        if (canJump && isGrounded && Input.GetKeyDown(KeyCode.Space))
+            Jump();
+
+        if (transform.position.y < -5)
+            Die();
+        Score();
+    }
+
+    private void FixedUpdate()
+    {
+        if (!alive) return;
+
+        float dx = speed * Time.fixedDeltaTime;
+        Vector3 forwardMove = dx * t.forward;
+        Vector3 hoirzMove = Vector3.zero;
+
+        if (canMoveSideways)
+        {
+            float x = t.position.x;
+            float minx = floorBounds[0]+2f;
+            float maxx = floorBounds[1]-2f;
+            hoirzMove = horizontalInput * dx * horizontalMultiplier * t.right;
+            if (minx >= x)
+            {
+                canMoveLeft = false;
+                if (horizontalInput < 0)
+                    hoirzMove = Vector3.zero;
+            }
+            else if (maxx <= x)
+            {
+                canMoveRight = false;
+                if (horizontalInput > 0)
+                    hoirzMove = Vector3.zero;
+            }
+            else
+            {
+                canMoveLeft = true;
+                canMoveRight = true;
+            }
+        }
+
+        rb.MovePosition(rb.position + forwardMove + hoirzMove);
+
+        rb.AddForce((currentGravityScale - 1) * rb.mass * Physics.gravity);
+    }
+
+    void CheckGrounded()
+    {
+        Ray ray = new Ray(transform.position, Vector3.down);
+        isGrounded = Physics.Raycast(ray, out hit, distanceToCheck);
+    }
+
+
     public void SwitchTo2d()
     {
         canMoveSideways = false;
+        canMoveLeft = false;
+        canMoveRight = false;
         canJump = true;
         col2d.enabled = true;
         col3d.enabled = false;
@@ -87,82 +149,18 @@ public class PlayerController : MonoBehaviour
         col3d.enabled = true;
     }
 
-    private void FixedUpdate()
-    {
-        if (!alive) return;
-
-        // always move forward
-        Vector3 forwardMove = transform.forward * speed * Time.fixedDeltaTime;
-        Vector3 horizontalMove = Vector3.zero;
-
-
-        if (canMoveSideways)
-        {
-            horizontalMove = transform.right * horizontalInput * speed *
-                             Time.fixedDeltaTime * horizontalMultiplier;
-        }
-
-
-        rb.AddForce(Physics.gravity * (currentGravityScale - 1) * rb.mass);
-
-        // move sideways
-
-        rb.MovePosition(rb.position + forwardMove + horizontalMove);
-
-
-        // prevent player for going past the edge of the map
-        if (transform.position.x <= floorBounds[0])
-        {
-            transform.position = new Vector3(floorBounds[0], transform.position.y,
-                transform.position.z);
-        }
-        else if (transform.position.x >= floorBounds[1])
-        {
-            transform.position = new Vector3(floorBounds[1], transform.position.y,
-                transform.position.z);
-        }
-    }
-
 
     private void Jump()
     {
         rb.AddForce(Vector2.up * jumpAmount, ForceMode.Impulse);
         if (rb.velocity.y > 0)
-        {
             currentGravityScale = gravityScale;
-        }
         else if (rb.velocity.y < 0)
-        {
             currentGravityScale = fallingGravityScale;
-        }
         else
-        {
             currentGravityScale = gravityScale;
-        }
     }
 
-    private void Update()
-    {
-        horizontalInput = Input.GetAxis("Horizontal");
-
-        Ray ray = new Ray(transform.position, Vector3.down);
-        isGrounded = Physics.Raycast(ray, out hit, distanceToCheck);
-
-        if (canJump && isGrounded && Input.GetKeyDown(KeyCode.Space))
-        {
-            Jump();
-        }
-
-
-        if (transform.position.y < -5)
-        {
-            Die();
-        }
-
-        travelDistance = Vector3.Distance(startPos, transform.position);
-
-        Score();
-    }
 
     public void Score()
     {
@@ -178,5 +176,13 @@ public class PlayerController : MonoBehaviour
         col3d.enabled = false;
         col2d.enabled = false;
         Debug.Log("get rekt u fokin noob, u ded");
+    }
+
+
+    private void OnDrawGizmos()
+    {
+        // if Grounded, draw a green, otherwise red, sphere above player
+        Gizmos.color = isGrounded ? Color.green : Color.red;
+        Gizmos.DrawSphere(transform.position + Vector3.up * distanceToCheck, 0.1f);
     }
 }
