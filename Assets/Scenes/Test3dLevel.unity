@@ -448,9 +448,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2311535c6d8f946c4a844536dd2c1c0a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  offset3D: {x: 0, y: 0, z: 0}
-  rotation3D: {x: 0, y: 0, z: 0}
-  lerpTime: 0.5
+  testMode: 1
+  is3D: 1
+  lerpTime: 0.2
   offset2D: {x: 23, y: 4.8, z: 0}
   rotation2D: {x: 0, y: -90, z: 0}
-  testMode: 1
+  fov: 60
+  near: 0.3
+  far: 1000
+  orthographicSize: 5
+  aspect: 0

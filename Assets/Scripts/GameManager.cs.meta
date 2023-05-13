@@ -1,0 +1,13 @@
+fileFormatVersion: 2
+guid: 3c54e796f4390c64ca8e9acb58199e4b
+MonoImporter:
+  externalObjects: {}
+  serializedVersion: 2
+  defaultReferences:
+  - _timerController: {instanceID: 0}
+  - _eventsSO: {fileID: 11400000, guid: ef698ee4567c2e24182536887f9adff5, type: 2}
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

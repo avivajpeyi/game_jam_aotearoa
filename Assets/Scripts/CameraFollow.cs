@@ -7,11 +7,14 @@ public class CameraFollow : MonoBehaviour
     Camera cam;
     Transform _player;
 
+        
+    // TODO: @nzkieran OnSwitch2d add SwitchTo2d()
+    // TODO: @nzkieran OnSwitch3d add SwitchTo3d()
 
     public bool testMode; // public so we can change it in script 1 location
 
     [SerializeField] bool is3D = true;
-    [SerializeField] private float lerpTime = 0.5f;
+    [SerializeField] private float lerpTime = 0.15f;
 
     // Positioning
     Vector3 offset3D;
@@ -83,13 +86,14 @@ public class CameraFollow : MonoBehaviour
         }
 
 
+        // TODO: 
         if (testMode)
         {
-            if (Input.GetKeyDown(KeyCode.Alpha3)) // the 3 key
+            if (!is3D && Input.GetKeyDown(KeyCode.Alpha3)) // the 3 key
             {
                 SwitchTo3D();
             }
-            else if (Input.GetKeyDown(KeyCode.Alpha2))
+            else if (is3D && Input.GetKeyDown(KeyCode.Alpha2))
             {
                 SwitchTo2D();
             }
@@ -99,13 +103,26 @@ public class CameraFollow : MonoBehaviour
     public void SwitchTo3D()
     {
         is3D = true;
-        StartLerpCameraCoroutine(offset3D, rotation3D, perspective3d);
+        // 
+        Vector3 targetPos = new Vector3(
+            offset3D.x,
+            _player.position.y + offset3D.y,
+            _player.position.z + offset3D.z
+        );
+
+        StartLerpCameraCoroutine(targetPos, rotation3D, perspective3d);
     }
 
     public void SwitchTo2D()
     {
         is3D = false;
-        StartLerpCameraCoroutine(offset2D, rotation2D, perspective2d);
+        Vector3 targetPos = new Vector3(
+            _player.position.x + offset2D.x,
+            offset2D.y,
+            _player.position.z + offset2D.z
+        );
+
+        StartLerpCameraCoroutine(targetPos, rotation2D, perspective2d);
     }
 
     private Coroutine StartLerpCameraCoroutine(Vector3 targetPos, Vector3 targetRot,
