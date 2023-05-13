@@ -47,7 +47,7 @@ public class PlayerController : MonoBehaviour
         rb = GetComponent<Rigidbody>();
         col3d = GameObject.Find("3dCollider").GetComponent<Collider>();
         col2d = GameObject.Find("2dCollider").GetComponent<Collider>();
-        SwitchTo3d();
+        // SwitchTo3d();
 
         _eventsSO.eventActivate2D += SwitchTo2d;
         _eventsSO.eventActivate3D += SwitchTo3d;

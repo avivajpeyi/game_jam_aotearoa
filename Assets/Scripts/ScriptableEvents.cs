@@ -35,4 +35,14 @@ public class ScriptableEvents : ScriptableObject
             eventActivate3D();
         }
     }
+
+    public delegate void AddTime2D();
+    public event AddTime2D addTime2D;
+    public void OnAddTime2D()
+    {
+        if (addTime2D != null)
+        {
+            addTime2D();
+        }
+    }
 }

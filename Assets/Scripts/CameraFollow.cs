@@ -93,18 +93,7 @@ public class CameraFollow : MonoBehaviour
         }
 
 
-        // TODO: 
-        if (testMode)
-        {
-            if (!is3D && Input.GetKeyDown(KeyCode.Alpha3)) // the 3 key
-            {
-                SwitchTo3D();
-            }
-            else if (is3D && Input.GetKeyDown(KeyCode.Alpha2))
-            {
-                SwitchTo2D();
-            }
-        }
+        
     }
 
     public void SwitchTo3D()
