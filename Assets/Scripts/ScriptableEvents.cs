@@ -97,4 +97,24 @@ public class ScriptableEvents : ScriptableObject
         if (startGame != null)
             startGame();
     }
+
+    public delegate void Timeout2D();
+    public static event Timeout2D timeout2D;
+    public static void TriggerTimeout2D()
+    {
+        if (timeout2D != null)
+        {
+            timeout2D();
+        }
+    }
+
+    public delegate void Timeout3D();
+    public static event Timeout3D timeout3D;
+    public static void TriggerTimeout3D()
+    {
+        if (timeout3D != null)
+        {
+            timeout3D();
+        }
+    }
 }

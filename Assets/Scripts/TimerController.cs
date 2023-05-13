@@ -15,6 +15,7 @@ public class TimerController : MonoBehaviour
         timer3D.StartTimer();
         timer2D.StartTimer();
         timer2D.PauseTimer();
+
         ScriptableEvents.eventActivate2D += Play2DState;
         ScriptableEvents.eventActivate3D += Play3DState;
 
@@ -54,6 +55,16 @@ public class TimerController : MonoBehaviour
 
     private void Update()
     {
+        if (timer2D.finished)
+        {
+            ScriptableEvents.TriggerTimeout2D();
+        }
+
+        if (timer3D.finished)
+        {
+            ScriptableEvents.TriggerTimeout3D();
+        }
+
         if (timer3D.finished || timer2D.finished)
         {
             ScriptableEvents.TriggerEndGame();
