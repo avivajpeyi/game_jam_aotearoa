@@ -6,7 +6,7 @@ using UnityEngine;
 public class ScriptableEvents : ScriptableObject
 {
     public delegate void Score(int scoreToAdd);
-    public event Score eventScore;
+    public static event Score eventScore;
 
     public void OnScoreEvent(int scoreToAdd)
     {
@@ -17,7 +17,7 @@ public class ScriptableEvents : ScriptableObject
     }
 
     public delegate void Activate2D();
-    public event Activate2D eventActivate2D;
+    public static event Activate2D eventActivate2D;
     public void OnActivate2D()
     {
         if (eventActivate2D != null)
@@ -27,7 +27,7 @@ public class ScriptableEvents : ScriptableObject
     }
 
     public delegate void Activate3D();
-    public event Activate3D eventActivate3D;
+    public static event Activate3D eventActivate3D;
     public void OnActivate3D()
     {
         if (eventActivate3D != null)

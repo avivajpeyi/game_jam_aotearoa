@@ -98,9 +98,8 @@ public class FloorTile : MonoBehaviour
             Random.Range(_collider.bounds.min.z, _collider.bounds.max.z)
         );
 
-        point.y =
-            _spawner.yPos +
-            1.0f; // add 1 to the y position so the pickup is above the ground
+        // add 1 to the y position so the pickup is above the ground
+        point.y = _spawner.yPos + 1.0f; 
         return point;
     }
 }

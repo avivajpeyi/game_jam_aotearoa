@@ -13,8 +13,6 @@ public class GameManager : MonoBehaviour
         }
     }
 
-    [SerializeField] TimerController _timerController;
-    [SerializeField] ScriptableEvents _eventsSO;
     [SerializeField] bool testMode = true;
     [SerializeField] static bool is3D = false;
 
@@ -22,13 +20,13 @@ public class GameManager : MonoBehaviour
     void Start()
     {
         // _timerController.start();
-        _eventsSO.eventScore += AddScore;
-        _eventsSO.eventActivate2D += Set2D;
-        _eventsSO.eventActivate3D += Set3D;
+        ScriptableEvents.eventScore += AddScore;
+        ScriptableEvents.eventActivate2D += Set2D;
+        ScriptableEvents.eventActivate3D += Set3D;
 
 
 
-        // _eventsSO.eventActivate3D();
+        ScriptableEvents.eventActivate3D();
     }
 
     // Update is called once per frame
@@ -39,20 +37,20 @@ public class GameManager : MonoBehaviour
         {
             if (!is3D && Input.GetKeyDown(KeyCode.Alpha3)) // the 3 key
             {
-                // _eventsSO.eventActivate3D();
+                ScriptableEvents.eventActivate3D();
             }
             else if (is3D && Input.GetKeyDown(KeyCode.Alpha2))
             {
-                // _eventsSO.eventActivate2D();
+                ScriptableEvents.eventActivate2D();
             }
         }
     }
 
     public void OnDestroy()
     {
-        _eventsSO.eventScore -= AddScore;
-        _eventsSO.eventActivate2D -= Set2D;
-        _eventsSO.eventActivate3D -= Set3D;
+        ScriptableEvents.eventScore -= AddScore;
+        ScriptableEvents.eventActivate2D -= Set2D;
+        ScriptableEvents.eventActivate3D -= Set3D;
     }
 
     void AddScore(int scoreToAdd) {
