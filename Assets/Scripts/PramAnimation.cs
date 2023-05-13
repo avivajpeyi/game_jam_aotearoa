@@ -5,21 +5,24 @@ using UnityEngine;
 public class PramAnimation : MonoBehaviour
 {
     public float tiltAmount = 30f;
-    public float moveUpAmount = 1f;
+    public float moveUpAmount = 1.5f;
 
     private Transform pramBody;
     private Transform pramWheels;
     private float originalRotation;
     private bool isMovingUp;
     public float pramBodyOffset = 1f;
-
+    
     private void Start()
     {
         // // get child "body" transform by name
         pramBody = transform.Find("body");
         pramWheels = transform.Find("WheelBase");
         originalRotation = pramBody.rotation.eulerAngles.z;
+        
     }
+    
+    
 
     private void Update()
     {

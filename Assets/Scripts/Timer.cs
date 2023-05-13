@@ -1,24 +1,30 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class Timer : MonoBehaviour
 {
-    public float totalTime = 10f;  // Set the initial time here
-
+    public float totalTime = 10f; // Set the initial time here
+    private float maxTime;
     private bool isTimerRunning = false;
     private bool isPaused = false;
+    public bool finished;
+
+
+    void Start()
+    {
+        maxTime = totalTime;
+    }
+
 
     private void Update()
     {
         if (isTimerRunning && !isPaused)
         {
-            totalTime -= Time.deltaTime;
+            totalTime = Mathf.Clamp(totalTime - Time.deltaTime, 0f, maxTime);
             if (totalTime <= 0f)
-            {
-                // Timer has reached zero, handle accordingly
-                TimerCompleted();
-            }
+                finished = true;
         }
     }
 
@@ -39,14 +45,7 @@ public class Timer : MonoBehaviour
 
     public void AddTime(float time)
     {
-        totalTime += time;
+        totalTime = Mathf.Clamp(totalTime - time, 0f, maxTime);
     }
-
-    private void TimerCompleted()
-    {
-        // Handle timer completion logic here
-        Debug.Log("Timer has completed. GAME OVER YEEHAW!");
-    }
+    
 }
-
-

@@ -19,8 +19,7 @@ public class PlayerController : MonoBehaviour
     public float gravityScale = 10;
     public float fallingGravityScale = 40;
     public static bool isGrounded;
-    public static bool isMovingUp;
-    
+
     bool canJump = true; // for 2d movement
     bool canMoveSideways = true; // for 3d movement
 
@@ -28,12 +27,10 @@ public class PlayerController : MonoBehaviour
     public float distanceToCheck = 2f;
     public RaycastHit hit;
 
-    
-    
-    public float[] floorBounds = {-5, 5};
 
-    
-    
+    public float[] floorBounds = { -5, 5 };
+
+
     // TODO: maybe make the player a static variable so we don't have to find it every time?
 
     bool alive = true;
@@ -53,9 +50,6 @@ public class PlayerController : MonoBehaviour
 
     [SerializeField] float scoreBase = 1;
 
-    
-    
-    
 
     private void Start()
     {
@@ -67,14 +61,16 @@ public class PlayerController : MonoBehaviour
 
         ScriptableEvents.eventActivate2D += SwitchTo2d;
         ScriptableEvents.eventActivate3D += SwitchTo3d;
+        ScriptableEvents.endGame += Die;
     }
 
     public void OnDestroy()
     {
         ScriptableEvents.eventActivate2D -= SwitchTo2d;
         ScriptableEvents.eventActivate3D -= SwitchTo3d;
+        ScriptableEvents.endGame -= Die;
     }
-    
+
     public void SwitchTo2d()
     {
         canMoveSideways = false;
@@ -82,7 +78,7 @@ public class PlayerController : MonoBehaviour
         col2d.enabled = true;
         col3d.enabled = false;
     }
-    
+
     public void SwitchTo3d()
     {
         canMoveSideways = true;
@@ -106,39 +102,37 @@ public class PlayerController : MonoBehaviour
                              Time.fixedDeltaTime * horizontalMultiplier;
         }
 
-        
+
         rb.AddForce(Physics.gravity * (currentGravityScale - 1) * rb.mass);
 
         // move sideways
 
         rb.MovePosition(rb.position + forwardMove + horizontalMove);
-        
-        
+
+
         // prevent player for going past the edge of the map
         if (transform.position.x <= floorBounds[0])
         {
-            transform.position = new Vector3(floorBounds[0], transform.position.y, transform.position.z);
+            transform.position = new Vector3(floorBounds[0], transform.position.y,
+                transform.position.z);
         }
         else if (transform.position.x >= floorBounds[1])
         {
-            transform.position = new Vector3(floorBounds[1], transform.position.y, transform.position.z);
+            transform.position = new Vector3(floorBounds[1], transform.position.y,
+                transform.position.z);
         }
     }
 
 
     private void Jump()
     {
-        
-        
         rb.AddForce(Vector2.up * jumpAmount, ForceMode.Impulse);
         if (rb.velocity.y > 0)
         {
-            isMovingUp = true;
             currentGravityScale = gravityScale;
         }
         else if (rb.velocity.y < 0)
         {
-            isMovingUp = false;
             currentGravityScale = fallingGravityScale;
         }
         else
@@ -153,7 +147,7 @@ public class PlayerController : MonoBehaviour
 
         Ray ray = new Ray(transform.position, Vector3.down);
         isGrounded = Physics.Raycast(ray, out hit, distanceToCheck);
-        
+
         if (canJump && isGrounded && Input.GetKeyDown(KeyCode.Space))
         {
             Jump();
@@ -181,7 +175,6 @@ public class PlayerController : MonoBehaviour
         // Restart the game
         Debug.Log("get rekt u fokin noob");
         // TODO: maybe make a game manager class to handle this?
-        Invoke("Restart", 2);
     }
 
     void Restart()
@@ -189,8 +182,4 @@ public class PlayerController : MonoBehaviour
         ScriptableEvents.TriggerResetScore();
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);
     }
-    
-
-    
-    
 }

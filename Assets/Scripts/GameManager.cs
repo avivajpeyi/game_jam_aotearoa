@@ -24,10 +24,21 @@ public class GameManager : MonoBehaviour
         ScriptableEvents.eventScore += AddScore;
         ScriptableEvents.eventActivate2D += Set2D;
         ScriptableEvents.eventActivate3D += Set3D;
-
-
-
+        ScriptableEvents.endGame += StopGame;
         ScriptableEvents.TriggerActivate3D();
+    }
+
+    public void OnDestroy()
+    {
+        ScriptableEvents.eventScore -= AddScore;
+        ScriptableEvents.eventActivate2D -= Set2D;
+        ScriptableEvents.eventActivate3D -= Set3D;
+        ScriptableEvents.endGame -= StopGame;
+    }
+    
+    void StopGame()
+    {
+        Time.timeScale = 0.1f;
     }
 
     // Update is called once per frame
@@ -46,13 +57,6 @@ public class GameManager : MonoBehaviour
                 ScriptableEvents.TriggerActivate2D();
             }
         }
-    }
-
-    public void OnDestroy()
-    {
-        ScriptableEvents.eventScore -= AddScore;
-        ScriptableEvents.eventActivate2D -= Set2D;
-        ScriptableEvents.eventActivate3D -= Set3D;
     }
 
     void AddScore(float scoreToAdd)
