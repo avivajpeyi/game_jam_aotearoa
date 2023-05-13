@@ -8,7 +8,9 @@ using UnityEngine.SceneManagement;
 [RequireComponent(typeof(Rigidbody))]
 public class PlayerController : MonoBehaviour
 {
-
+    
+    // TODO: @nzkieran OnSwitch2d add 'canMoveSideways = false' and 'canJump = true'
+    // TODO: @nzkieran OnSwitch3d add 'canMoveSideways = true' and 'canJump = false'
     
     public float jumpAmount = 35;
     public float currentGravityScale = 10;
@@ -70,7 +72,8 @@ public class PlayerController : MonoBehaviour
         {
             rb.AddForce(Vector2.up * jumpAmount, ForceMode.Impulse);
         }
-        if(rb.velocity.y >= 0)
+
+        if (rb.velocity.y >= 0)
         {
             currentGravityScale = gravityScale;
         }
