@@ -23,11 +23,8 @@ public class FloorTile : MonoBehaviour
 {
     Collider _collider;
     TileGenerator _spawner;
-    private GameObject _pickupPrefab;
-    private GameObject _obstaclePrefab;
     private Transform _nextSpawnPoint;
-    // private List<Transform> _obstacleSpawnPoints = new List<Transform>();
-    private int numPickups = 2;
+
 
 
     public void Initialise(TileGenerator spawner, bool spawnCrap = true,
@@ -35,24 +32,10 @@ public class FloorTile : MonoBehaviour
     {
         _spawner = spawner;
         _collider = GetComponent<Collider>();
-        _pickupPrefab = Resources.Load<GameObject>("Pickup");
         _nextSpawnPoint = transform.Find("NextSpawnPoint");
         
-        // _obstaclePrefab = Resources.Load<GameObject>("Obstacle");
-        // _obstacleSpawnPoints.Add(transform.Find("ObstacleSpwnPtLeft"));
-        // _obstacleSpawnPoints.Add(transform.Find("ObstacleSpwnPtMid"));
-        // _obstacleSpawnPoints.Add(transform.Find("ObstacleSpwnPtRight"));
-        this.numPickups = numPickups;
-        if (spawnCrap)
-        {
-            // SpawnObstacle();
-            SpawnPickups();
-        }
+        
 
-        // foreach (Transform spawnPoint in _obstacleSpawnPoints)
-        // {
-        //     Destroy(spawnPoint.gameObject);
-        // }
     }
 
 
@@ -65,35 +48,6 @@ public class FloorTile : MonoBehaviour
     {
         _spawner.SpawnTile(true);
         Destroy(gameObject, 2);
-    }
-
-    // public void SpawnObstacle()
-    // {
-    //     // 0 to N-1 where N is the number of spawn points (so at least 1 exit)
-    //     int numObstacles = Random.Range(0, _obstacleSpawnPoints.Count - 1);
-    //     for (int i = 0; i < numObstacles; i++)
-    //     {
-    //         int obstacleSpawnIndex = Random.Range(0, _obstacleSpawnPoints.Count);
-    //         Transform spawnPoint = _obstacleSpawnPoints[obstacleSpawnIndex];
-    //         Instantiate(_obstaclePrefab, spawnPoint.position, Quaternion.identity,
-    //             transform);
-    //         _obstacleSpawnPoints.RemoveAt(obstacleSpawnIndex);
-    //     }
-    // }
-
-
-    public void SpawnPickups()
-    {
-        for (int i = 0; i < numPickups; i++)
-        {
-            GameObject temp = Instantiate(_pickupPrefab, transform);
-            bool isFor3d = Random.Range(0, 2) == 0;
-            
-            temp.transform.position = GetRandomPointInCollider();
-            if (!isFor3d)
-                temp.transform.position += new Vector3(0, Random.Range(1, 5), 0);
-            temp.GetComponent<Pickup>().Initialise(isFor3d);
-        }
     }
 
     Vector3 GetRandomPointInCollider()
