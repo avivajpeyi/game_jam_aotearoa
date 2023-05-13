@@ -2,11 +2,12 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
-using UnityEngine.UI;
+using TMPro;
 
 public class GameManager : MonoBehaviour
 {
     [SerializeField] float _score = 0;
+    [SerializeField] TextMeshProUGUI scoreUI;
 
     public float Score
     {
@@ -80,6 +81,8 @@ public class GameManager : MonoBehaviour
         {
             ScriptableEvents.TriggerStartGame();
         }
+
+        scoreUI.SetText(_score.ToString());
     }
 
     void AddScore(float scoreToAdd)
