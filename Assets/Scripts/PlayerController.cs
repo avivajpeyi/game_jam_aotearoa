@@ -161,7 +161,7 @@ public class PlayerController : MonoBehaviour
 
     public void Score()
     {
-        ScriptableEvents.OnScoreEvent(scoreBase * Time.deltaTime);
+        ScriptableEvents.TriggerScoreEvent(scoreBase * Time.deltaTime);
     }
 
     public void Die()
@@ -175,6 +175,7 @@ public class PlayerController : MonoBehaviour
 
     void Restart()
     {
+        ScriptableEvents.TriggerResetScore();
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);
     }
 }

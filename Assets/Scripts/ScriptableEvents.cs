@@ -9,7 +9,7 @@ public class ScriptableEvents : ScriptableObject
     public delegate void Score(float scoreToAdd);
     public static event Score eventScore;
 
-    public static void OnScoreEvent(float scoreToAdd)
+    public static void TriggerScoreEvent(float scoreToAdd)
     {
         if (eventScore != null)
         {
@@ -19,7 +19,7 @@ public class ScriptableEvents : ScriptableObject
 
     public delegate void Activate2D();
     public static event Activate2D eventActivate2D;
-    public static void OnActivate2D()
+    public static void TriggerActivate2D()
     {
         if (eventActivate2D != null)
         {
@@ -35,7 +35,7 @@ public class ScriptableEvents : ScriptableObject
 
     public delegate void Activate3D();
     public static event Activate3D eventActivate3D;
-    public static void OnActivate3D()
+    public static void TriggerActivate3D()
     {
         if (eventActivate3D != null)
         {
@@ -52,7 +52,7 @@ public class ScriptableEvents : ScriptableObject
 
     public delegate void AddTime2D(float timeToAdd);
     public static event AddTime2D addTime2D;
-    public static void OnAddTime2D(float timeToAdd)
+    public static void TriggerAddTime2D(float timeToAdd)
     {
         if (addTime2D != null)
         {
@@ -62,11 +62,31 @@ public class ScriptableEvents : ScriptableObject
 
     public delegate void AddTime3D(float timeToAdd);
     public static event AddTime3D addTime3D;
-    public static void OnAddTime3D(float timeToAdd)
+    public static void TriggerAddTime3D(float timeToAdd)
     {
         if (addTime3D != null) 
         {
             addTime3D(timeToAdd);
+        }
+    }
+
+    public delegate void EndGame();
+    public static event EndGame endGame;
+    public static void TriggerEndGame()
+    {
+        if (endGame != null)
+        {
+            endGame();
+        }
+    }
+
+    public delegate void ResetScore();
+    public static event ResetScore resetScore;
+    public static void TriggerResetScore()
+    {
+        if (resetScore != null)
+        {
+            resetScore();
         }
     }
 }
