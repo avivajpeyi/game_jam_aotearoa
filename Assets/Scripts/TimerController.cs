@@ -59,7 +59,7 @@ public class TimerController : MonoBehaviour
         // For testing purposes, let's check for user input to trigger certain actions
         if (GameManager.testMode)
         {
-            TestingLogic();
+            // TestingLogic();
         }
     }
 
