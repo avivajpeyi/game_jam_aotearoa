@@ -12,10 +12,8 @@ using UnityEngine.SceneManagement;
 [RequireComponent(typeof(Rigidbody))]
 public class PlayerController : MonoBehaviour
 {
-    
-    // TODO: @nzkieran OnSwitch2d add 'canMoveSideways = false' and 'canJump = true'
-    // TODO: @nzkieran OnSwitch3d add 'canMoveSideways = true' and 'canJump = false'
-    
+    [SerializeField] ScriptableEvents _eventsSO;
+
     public float jumpAmount = 35;
     public float currentGravityScale = 10;
     public float gravityScale = 10;
@@ -50,6 +48,15 @@ public class PlayerController : MonoBehaviour
         col3d = GameObject.Find("3dCollider").GetComponent<Collider>();
         col2d = GameObject.Find("2dCollider").GetComponent<Collider>();
         SwitchTo3d();
+
+        _eventsSO.eventActivate2D += SwitchTo2d;
+        _eventsSO.eventActivate3D += SwitchTo3d;
+    }
+
+    public void OnDestroy()
+    {
+        _eventsSO.eventActivate2D -= SwitchTo2d;
+        _eventsSO.eventActivate3D -= SwitchTo3d;
     }
     
     public void SwitchTo2d()

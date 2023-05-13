@@ -29,6 +29,11 @@ public class GameManager : MonoBehaviour
         
     }
 
+    public void OnDestroy()
+    {
+        _eventsSO.eventScore -= AddScore;
+    }
+
     void AddScore(int scoreToAdd) {
         _score += scoreToAdd;
     }

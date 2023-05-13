@@ -7,9 +7,7 @@ public class CameraFollow : MonoBehaviour
     Camera cam;
     Transform _player;
 
-        
-    // TODO: @nzkieran OnSwitch2d add SwitchTo2d()
-    // TODO: @nzkieran OnSwitch3d add SwitchTo3d()
+    [SerializeField] ScriptableEvents _eventsSO;
 
     public bool testMode; // public so we can change it in script 1 location
 
@@ -39,6 +37,15 @@ public class CameraFollow : MonoBehaviour
         InitialiseCameraData();
         if (_player == null)
             Debug.LogError("Player not found by Camera!");
+
+        _eventsSO.eventActivate2D += SwitchTo2D;
+        _eventsSO.eventActivate3D += SwitchTo3D;
+    }
+
+    public void OnDestroy()
+    {
+        _eventsSO.eventActivate2D -= SwitchTo2D;
+        _eventsSO.eventActivate3D -= SwitchTo3D;
     }
 
 
