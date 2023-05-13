@@ -9,19 +9,19 @@ public class TurnWheel : MonoBehaviour
     float originalYRotation = 1f;
     public float speed = 500f;
     public bool turnLeftRight = false;
-
+    private PlayerController _playerController;
 
     private void Start()
     {
+        _playerController = FindObjectOfType<PlayerController>();
         originalYRotation = transform.rotation.eulerAngles.y;
     }
 
     private void Update()
     {
-        float horizontalInput = Input.GetAxis("Horizontal");
-        if (GameManager.is3D && turnLeftRight && horizontalInput != 0)
+        if (GameManager.is3D && turnLeftRight && _playerController.horizontalInput != 0)
         {
-            float targetRotation = originalYRotation + tiltAmount * horizontalInput;
+            float targetRotation = originalYRotation + tiltAmount * _playerController.horizontalInput;
             transform.rotation = Quaternion.Euler(0f, targetRotation, 0);
         }
         

@@ -351,6 +351,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 2656571939093094450, guid: 93462a6e6dca54454ba7f5f1c4b9bd9f, type: 3}
+      propertyPath: nudgeMode
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 6473154312414460424, guid: 93462a6e6dca54454ba7f5f1c4b9bd9f, type: 3}
       propertyPath: m_RootOrder
       value: 3
@@ -1244,6 +1248,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: SpawnManager
       objectReference: {fileID: 0}
+    - target: {fileID: 6851454270921051977, guid: 1e80cd2b48a314f64a8cf7893106d2e4, type: 3}
+      propertyPath: tilesList
+      value: 
+      objectReference: {fileID: 11400000, guid: c5379203bd8b546a0bee5fa15c48eeb0, type: 2}
     - target: {fileID: 6851454270921051977, guid: 1e80cd2b48a314f64a8cf7893106d2e4, type: 3}
       propertyPath: groundTiles.Array.size
       value: 7

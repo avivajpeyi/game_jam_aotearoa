@@ -38,7 +38,7 @@ public class PlayerController : MonoBehaviour
     public float speed = 10;
     Rigidbody rb;
 
-    float horizontalInput;
+    public float horizontalInput;
     [SerializeField] float horizontalMultiplier = 2;
 
     Vector3 startPos;

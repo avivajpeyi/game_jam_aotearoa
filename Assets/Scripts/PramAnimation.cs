@@ -14,12 +14,13 @@ public class PramAnimation : MonoBehaviour
     public float pramBodyOffset = 1f;
     bool isFrozen = false;
 
+    private PlayerController _playerController;
     private void Start()
     {
         pramBody = transform.Find("body");
         pramWheels = transform.Find("WheelBase");
         originalRotation = pramBody.rotation.eulerAngles.z;
-
+        _playerController = FindObjectOfType<PlayerController>();
         ScriptableEvents.endGame += Freeze;
     }
 
@@ -48,19 +49,19 @@ public class PramAnimation : MonoBehaviour
 
     void Handle3dAnim()
     {
-        float horizontalInput = Input.GetAxis("Horizontal");
-        if (horizontalInput != 0)
+        
+        if (_playerController.horizontalInput != 0)
         {
-            if (!PlayerController.canMoveLeft && horizontalInput < 0)
-            {
-                horizontalInput = 0;
-            }
-            else if (!PlayerController.canMoveRight && horizontalInput > 0)
-            {
-                horizontalInput = 0;
-            }
+            // if (!PlayerController.canMoveLeft && _playerController.horizontalInput < 0)
+            // {
+            //     horizontalInput = 0;
+            // }
+            // else if (!PlayerController.canMoveRight && horizontalInput > 0)
+            // {
+            //     horizontalInput = 0;
+            // }
 
-            float targetRotation = originalRotation - tiltAmount * horizontalInput;
+            float targetRotation = originalRotation - tiltAmount * _playerController.horizontalInput;
             pramBody.rotation = Quaternion.Euler(0f, 0f, targetRotation);
         }
         else
