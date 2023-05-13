@@ -18,8 +18,9 @@ public class TimerController : MonoBehaviour
         timer2D.PauseTimer();
         ScriptableEvents.eventActivate2D += Play2DState;
         ScriptableEvents.eventActivate3D += Play3DState;
+        
         ScriptableEvents.addTime2D += AddToTimer2D;
-        ScriptableEvents.addTime2D += AddToTimer3D;
+        ScriptableEvents.addTime3D += AddToTimer3D;
         
     }
     
@@ -32,13 +33,13 @@ public class TimerController : MonoBehaviour
     public void AddToTimer3D()
     {
         timer3D.AddTime(addedTime);
-        Debug.Log("Added 10 seconds to the timer.");
+        Debug.Log("Added time to 3d timer");
     }
 
     public void AddToTimer2D()
     {
         timer2D.AddTime(addedTime);
-        Debug.Log("Added 10 seconds to the timer.");
+        Debug.Log("Added time to 2d timer");
     }
 
     public void Play3DState()
