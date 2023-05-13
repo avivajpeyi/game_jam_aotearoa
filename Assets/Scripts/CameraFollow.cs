@@ -7,11 +7,14 @@ public class CameraFollow : MonoBehaviour
     Camera cam;
     Transform _player;
 
+        
+    // TODO: @nzkieran OnSwitch2d add SwitchTo2d()
+    // TODO: @nzkieran OnSwitch3d add SwitchTo3d()
 
     public bool testMode; // public so we can change it in script 1 location
 
     [SerializeField] bool is3D = true;
-    [SerializeField] private float lerpTime = 0.5f;
+    [SerializeField] private float lerpTime = 0.15f;
 
     // Positioning
     Vector3 offset3D;
@@ -83,13 +86,14 @@ public class CameraFollow : MonoBehaviour
         }
 
 
+        // TODO: 
         if (testMode)
         {
-            if (Input.GetKeyDown(KeyCode.Alpha3)) // the 3 key
+            if (!is3D && Input.GetKeyDown(KeyCode.Alpha3)) // the 3 key
             {
                 SwitchTo3D();
             }
-            else if (Input.GetKeyDown(KeyCode.Alpha2))
+            else if (is3D && Input.GetKeyDown(KeyCode.Alpha2))
             {
                 SwitchTo2D();
             }
@@ -117,7 +121,7 @@ public class CameraFollow : MonoBehaviour
             offset2D.y,
             _player.position.z + offset2D.z
         );
-        
+
         StartLerpCameraCoroutine(targetPos, rotation2D, perspective2d);
     }
 
