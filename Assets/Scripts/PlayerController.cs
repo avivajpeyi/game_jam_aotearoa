@@ -135,6 +135,8 @@ public class PlayerController : MonoBehaviour
         }
 
         travelDistance = Vector3.Distance(startPos, transform.position);
+
+        Score();
     }
 
     public void Score()
