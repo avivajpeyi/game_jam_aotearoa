@@ -6,38 +6,66 @@ public class CameraFollow : MonoBehaviour
 {
     Camera cam;
     Transform _player;
-    [SerializeField] Vector3 offset3D;
-    // Rotation3d
-    [SerializeField] Vector3 rotation3D;
-    
-    
-    // Rotation2d
 
-    [SerializeField]
-    private Vector3 offset2D;
 
-    [SerializeField] private Vector3 rotation2D = new Vector3(0, -90, 0);
-    
     public bool testMode; // public so we can change it in script 1 location
 
-    
-    bool is3D = true;
+    [SerializeField] bool is3D = true;
+    [SerializeField] private float lerpTime = 0.5f;
+
+    // Positioning
+    Vector3 offset3D;
+    Vector3 rotation3D;
+    [SerializeField] private Vector3 offset2D;
+    [SerializeField] private Vector3 rotation2D = new Vector3(0, -90, 0);
+
+
+    //  perspective section
+    private Matrix4x4 perspective2d, perspective3d;
+    [SerializeField] private float fov = 60f;
+    [SerializeField] private float near = .3f;
+    [SerializeField] private float far = 1000f;
+    [SerializeField] private float orthographicSize = 5f;
+    [SerializeField] private float aspect;
+
 
     private void Start()
     {
         cam = GetComponent<Camera>();
         _player = FindObjectOfType<PlayerController>().transform;
-        // if offset is not set, set it to the current position of the camera
-        if (offset3D == Vector3.zero)
-        {
-            offset3D = transform.position - _player.position;
-            rotation3D = transform.rotation.eulerAngles;
-        }
-            
-        
+        InitialiseCameraData();
         if (_player == null)
             Debug.LogError("Player not found by Camera!");
     }
+
+
+    private void InitialiseCameraData()
+    {
+        is3D = true;
+        // Set 3D positioning data by current camera position/rotation
+        offset3D = transform.position - _player.position;
+        rotation3D = transform.rotation.eulerAngles;
+        aspect = (float)Screen.width / (float)Screen.height;
+        UpdatePerspectiveData();
+        cam.projectionMatrix = perspective3d;
+    }
+
+    void UpdatePerspectiveData()
+    {
+        perspective2d = Matrix4x4.Ortho(-orthographicSize * aspect,
+            orthographicSize * aspect,
+            -orthographicSize, orthographicSize, near, far);
+        perspective3d = Matrix4x4.Perspective(fov, aspect, near, far);
+    }
+
+    public static Matrix4x4 MatrixLerp(Matrix4x4 from, Matrix4x4 to, float time)
+    {
+        Matrix4x4 ret = new Matrix4x4();
+        for (int i = 0; i < 16; i++)
+            ret[i] = Mathf.Lerp(from[i], to[i], time);
+        return ret;
+    }
+
 
     private void Update()
     {
@@ -66,32 +94,49 @@ public class CameraFollow : MonoBehaviour
                 SwitchTo2D();
             }
         }
-
     }
-    
+
     public void SwitchTo3D()
     {
         is3D = true;
-        LerpCamera(offset3D, rotation3D);
-        cam.orthographic = false;
+        StartLerpCameraCoroutine(offset3D, rotation3D, perspective3d);
     }
-    
+
     public void SwitchTo2D()
     {
         is3D = false;
-        LerpCamera(offset2D, rotation2D);
-        // set the camera to orthographic
-        cam.orthographic = true;
+        StartLerpCameraCoroutine(offset2D, rotation2D, perspective2d);
     }
-    
-    
-    private void LerpCamera(Vector3 targetPos, Vector3 targetRot)
+
+    private Coroutine StartLerpCameraCoroutine(Vector3 targetPos, Vector3 targetRot,
+        Matrix4x4 targetPerspective)
     {
-        // smooth transition to target position
-        transform.position = Vector3.Lerp(transform.position, targetPos, 0.1f);
-        // smooth transition to target rotation
-        // Set the rotation of the camera to the target rotation
+        StopAllCoroutines();
+        return StartCoroutine(LerpCamera(targetPos, targetRot, targetPerspective));
+    }
+
+
+    private IEnumerator LerpCamera(
+        Vector3 targetPos, Vector3 targetRot,
+        Matrix4x4 targetPerspective)
+    {
+        float time = 0;
+        Vector3 startPosition = transform.position;
+        Quaternion startRotation = transform.rotation;
+        Matrix4x4 startPerspective = cam.projectionMatrix;
+        while (time < lerpTime)
+        {
+            float dt = time / lerpTime;
+            transform.position = Vector3.Lerp(startPosition, targetPos, dt);
+            transform.rotation =
+                Quaternion.Lerp(startRotation, Quaternion.Euler(targetRot), dt);
+            cam.projectionMatrix = MatrixLerp(startPerspective, targetPerspective, dt);
+            time += Time.deltaTime;
+            yield return null;
+        }
+
+        transform.position = targetPos;
         transform.rotation = Quaternion.Euler(targetRot);
-        // transform.rotation = Quaternion.Lerp(transform.rotation, Quaternion.Euler(targetRot), 0.1f);
+        cam.projectionMatrix = targetPerspective;
     }
 }
