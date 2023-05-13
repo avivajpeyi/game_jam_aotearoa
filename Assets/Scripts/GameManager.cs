@@ -14,7 +14,7 @@ public class GameManager : MonoBehaviour
     }
 
     [SerializeField] bool testMode = true;
-    [SerializeField] static bool is3D = false;
+    [SerializeField] static bool is3D = true;
 
     // Start is called before the first frame update
     void Start()
@@ -37,6 +37,7 @@ public class GameManager : MonoBehaviour
         {
             if (!is3D && Input.GetKeyDown(KeyCode.Alpha3)) // the 3 key
             {
+                Debug.Log("Switch to 3D mode");
                 ScriptableEvents.OnActivate3D();
             }
             else if (is3D && Input.GetKeyDown(KeyCode.Alpha2))

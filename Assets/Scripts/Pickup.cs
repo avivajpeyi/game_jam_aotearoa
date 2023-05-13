@@ -28,7 +28,7 @@ public class Pickup : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        Debug.Log("Triggered!");
+
 
         if (other.gameObject.GetComponent<Obstacle>() != null)
         {

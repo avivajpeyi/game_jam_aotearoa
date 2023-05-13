@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -22,6 +23,12 @@ public class ScriptableEvents : ScriptableObject
     {
         if (eventActivate2D != null)
         {
+            Debug.Log("Switch to 2D mode: ");
+            // print all the subscribers
+            foreach (Delegate d in eventActivate2D.GetInvocationList())
+            {
+                Debug.Log(" >>>  " + d.Method.Name + " triggered");
+            }
             eventActivate2D();
         }
     }
@@ -32,7 +39,14 @@ public class ScriptableEvents : ScriptableObject
     {
         if (eventActivate3D != null)
         {
+            Debug.Log("Switch to 3D mode");
+            // print all the subscribers
+            foreach (Delegate d in eventActivate2D.GetInvocationList())
+            {
+                Debug.Log(" >>>  " + d.Method.Name + " triggered");
+            }
             eventActivate3D();
+            
         }
     }
 
