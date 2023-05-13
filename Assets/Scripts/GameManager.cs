@@ -6,25 +6,28 @@ using UnityEngine.UI;
 public class GameManager : MonoBehaviour
 {
     [SerializeField] float _score = 0;
+
     public float Score
     {
-        get 
-        {
-            return this._score;
-        }
+        get { return this._score; }
     }
 
     [SerializeField] public static bool testMode = true;
-    [SerializeField] public  static bool is3D = true;
+    [SerializeField] public static bool is3D = true;
+    [SerializeField] GameObject gameOverUI;
 
     // Start is called before the first frame update
     void Start()
     {
-
         ScriptableEvents.eventScore += AddScore;
         ScriptableEvents.eventActivate2D += Set2D;
         ScriptableEvents.eventActivate3D += Set3D;
-        ScriptableEvents.endGame += StopGame;
+
+
+        ScriptableEvents.endGame += GameOver;
+        ScriptableEvents.resetGame += Reset;
+
+
         ScriptableEvents.TriggerActivate3D();
     }
 
@@ -33,13 +36,11 @@ public class GameManager : MonoBehaviour
         ScriptableEvents.eventScore -= AddScore;
         ScriptableEvents.eventActivate2D -= Set2D;
         ScriptableEvents.eventActivate3D -= Set3D;
-        ScriptableEvents.endGame -= StopGame;
+
+        ScriptableEvents.endGame -= GameOver;
+        ScriptableEvents.resetGame -= Reset;
     }
-    
-    void StopGame()
-    {
-        Time.timeScale = 0.1f;
-    }
+
 
     // Update is called once per frame
     void Update()
@@ -77,5 +78,16 @@ public class GameManager : MonoBehaviour
     void Set2D()
     {
         is3D = false;
+    }
+
+    void GameOver()
+    {
+        gameOverUI.SetActive(true);
+        Time.timeScale = 0.01f;
+    }
+
+    void Reset()
+    {
+        gameOverUI.SetActive(false);
     }
 }
