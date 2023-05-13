@@ -49,14 +49,14 @@ public class PlayerController : MonoBehaviour
         col2d = GameObject.Find("2dCollider").GetComponent<Collider>();
         SwitchTo3d();
 
-        _eventsSO.eventActivate2D += SwitchTo2d;
-        _eventsSO.eventActivate3D += SwitchTo3d;
+        ScriptableEvents.eventActivate2D += SwitchTo2d;
+        ScriptableEvents.eventActivate3D += SwitchTo3d;
     }
 
     public void OnDestroy()
     {
-        _eventsSO.eventActivate2D -= SwitchTo2d;
-        _eventsSO.eventActivate3D -= SwitchTo3d;
+        ScriptableEvents.eventActivate2D -= SwitchTo2d;
+        ScriptableEvents.eventActivate3D -= SwitchTo3d;
     }
     
     public void SwitchTo2d()

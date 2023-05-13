@@ -14,13 +14,13 @@ public class GameManager : MonoBehaviour
     }
 
     [SerializeField] TimerController _timerController;
-    [SerializeField] ScriptableEvents _eventsSO;
+    
 
     // Start is called before the first frame update
     void Start()
     {
         // _timerController.start();
-        _eventsSO.eventScore += AddScore;
+        ScriptableEvents.eventScore += AddScore;
     }
 
     // Update is called once per frame
@@ -31,7 +31,7 @@ public class GameManager : MonoBehaviour
 
     public void OnDestroy()
     {
-        _eventsSO.eventScore -= AddScore;
+        ScriptableEvents.eventScore -= AddScore;
     }
 
     void AddScore(int scoreToAdd) {
