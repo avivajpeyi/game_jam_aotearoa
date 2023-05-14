@@ -44,8 +44,13 @@ public class GameManager : MonoBehaviour
         ScriptableEvents.resetGame += Reset;
         ScriptableEvents.startGame += StartGame;
 
+        ScriptableEvents.almostOut2D += Show2DTimerAlmostOut;
+        ScriptableEvents.almostOut3D += Show3DTimerAlmostOut;
+        ScriptableEvents.pickup2D += Show2DPickupUI;
+        ScriptableEvents.pickup3D += Show3DPickupUI;
 
-        
+
+
     }
 
 
@@ -61,6 +66,11 @@ public class GameManager : MonoBehaviour
         ScriptableEvents.endGame -= GameOver;
         ScriptableEvents.resetGame -= Reset;
         ScriptableEvents.startGame -= StartGame;
+        
+        ScriptableEvents.almostOut2D -= Show2DTimerAlmostOut;
+        ScriptableEvents.almostOut3D -= Show3DTimerAlmostOut;
+        ScriptableEvents.pickup2D -= Show2DPickupUI;
+        ScriptableEvents.pickup3D -= Show3DPickupUI;
     }
 
     
@@ -156,5 +166,23 @@ public class GameManager : MonoBehaviour
         timeout2DUI.SetActive(false);
     }
 
-    
+    void Show2DPickupUI()
+    {
+
+    }
+
+    void Show3DPickupUI()
+    {
+
+    }
+
+    void Show2DTimerAlmostOut()
+    {
+
+    }
+
+    void Show3DTimerAlmostOut()
+    {
+        
+    }
 }

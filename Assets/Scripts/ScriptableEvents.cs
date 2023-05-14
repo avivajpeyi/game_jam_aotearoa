@@ -137,4 +137,24 @@ public class ScriptableEvents : ScriptableObject
             pickup3D();
         }
     }
+
+    public delegate void Timer2DAlmostOut();
+    public static event Timer2DAlmostOut almostOut2D;
+    public static void TriggerTimer2DAlmostOut()
+    {
+        if (almostOut2D != null)
+        {
+            almostOut2D();
+        }
+    }
+
+    public delegate void Timer3DAlmostOut();
+    public static event Timer3DAlmostOut almostOut3D;
+    public static void TriggerTimer3DAlmostOut()
+    {
+        if (almostOut3D != null)
+        {
+            almostOut3D();
+        }
+    }
 }
