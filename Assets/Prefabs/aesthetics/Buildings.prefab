@@ -64,6 +64,7 @@ GameObject:
   - component: {fileID: 2989657315698477898}
   - component: {fileID: 2979454852349982078}
   - component: {fileID: 4357893290218058686}
+  - component: {fileID: 6965313058785300796}
   m_Layer: 0
   m_Name: SM_Bld_Background_Med_05
   m_TagString: Untagged
@@ -149,6 +150,23 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   probability: 0.5
+--- !u!114 &6965313058785300796
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2958463717735397674}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: abff6c0615b0146ca8c992fe345b58a5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  MyMaterials:
+  - {fileID: 2100000, guid: d032334ed988c420ab18e5778ccc40ab, type: 2}
+  - {fileID: 2100000, guid: c436aeac16c0e446bb169973051291ca, type: 2}
+  - {fileID: 2100000, guid: 828362473ab8f4605a55ff44f6d85083, type: 2}
+  - {fileID: 2100000, guid: ae6a742b683c7f74692dee45d6c17ff9, type: 2}
 --- !u!1 &4565390082213236402
 GameObject:
   m_ObjectHideFlags: 0
@@ -161,6 +179,7 @@ GameObject:
   - component: {fileID: 4551472942512786792}
   - component: {fileID: 4543767163806512808}
   - component: {fileID: 7788012881840498745}
+  - component: {fileID: 4640391363879935007}
   m_Layer: 0
   m_Name: SM_Bld_Background_Med_01
   m_TagString: Untagged
@@ -246,6 +265,23 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   probability: 0.5
+--- !u!114 &4640391363879935007
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4565390082213236402}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: abff6c0615b0146ca8c992fe345b58a5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  MyMaterials:
+  - {fileID: 2100000, guid: d032334ed988c420ab18e5778ccc40ab, type: 2}
+  - {fileID: 2100000, guid: c436aeac16c0e446bb169973051291ca, type: 2}
+  - {fileID: 2100000, guid: 828362473ab8f4605a55ff44f6d85083, type: 2}
+  - {fileID: 2100000, guid: ae6a742b683c7f74692dee45d6c17ff9, type: 2}
 --- !u!1 &5215530392624945036
 GameObject:
   m_ObjectHideFlags: 0
@@ -258,6 +294,7 @@ GameObject:
   - component: {fileID: 5193210934315742182}
   - component: {fileID: 5202596043967655612}
   - component: {fileID: 6224295825702216920}
+  - component: {fileID: 1568917602082925902}
   m_Layer: 0
   m_Name: SM_Bld_Background_Lrg_01
   m_TagString: Untagged
@@ -343,6 +380,23 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   probability: 0.5
+--- !u!114 &1568917602082925902
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5215530392624945036}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: abff6c0615b0146ca8c992fe345b58a5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  MyMaterials:
+  - {fileID: 2100000, guid: d032334ed988c420ab18e5778ccc40ab, type: 2}
+  - {fileID: 2100000, guid: c436aeac16c0e446bb169973051291ca, type: 2}
+  - {fileID: 2100000, guid: 828362473ab8f4605a55ff44f6d85083, type: 2}
+  - {fileID: 2100000, guid: ae6a742b683c7f74692dee45d6c17ff9, type: 2}
 --- !u!1 &6200988675452216383
 GameObject:
   m_ObjectHideFlags: 0
@@ -355,6 +409,7 @@ GameObject:
   - component: {fileID: 6232324384980479835}
   - component: {fileID: 6223606456473655319}
   - component: {fileID: 6129741007824591863}
+  - component: {fileID: 4883776483911270883}
   m_Layer: 0
   m_Name: SM_Bld_Background_Med_03
   m_TagString: Untagged
@@ -440,6 +495,23 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   probability: 0.5
+--- !u!114 &4883776483911270883
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6200988675452216383}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: abff6c0615b0146ca8c992fe345b58a5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  MyMaterials:
+  - {fileID: 2100000, guid: d032334ed988c420ab18e5778ccc40ab, type: 2}
+  - {fileID: 2100000, guid: c436aeac16c0e446bb169973051291ca, type: 2}
+  - {fileID: 2100000, guid: 828362473ab8f4605a55ff44f6d85083, type: 2}
+  - {fileID: 2100000, guid: ae6a742b683c7f74692dee45d6c17ff9, type: 2}
 --- !u!1 &8123847178709055581
 GameObject:
   m_ObjectHideFlags: 0
@@ -452,6 +524,7 @@ GameObject:
   - component: {fileID: 8128161018497637431}
   - component: {fileID: 8137915725149995373}
   - component: {fileID: 979185640613506316}
+  - component: {fileID: 4153859886780822399}
   m_Layer: 0
   m_Name: SM_Bld_Background_Lrg_01
   m_TagString: Untagged
@@ -537,6 +610,23 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   probability: 0.5
+--- !u!114 &4153859886780822399
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8123847178709055581}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: abff6c0615b0146ca8c992fe345b58a5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  MyMaterials:
+  - {fileID: 2100000, guid: d032334ed988c420ab18e5778ccc40ab, type: 2}
+  - {fileID: 2100000, guid: c436aeac16c0e446bb169973051291ca, type: 2}
+  - {fileID: 2100000, guid: 828362473ab8f4605a55ff44f6d85083, type: 2}
+  - {fileID: 2100000, guid: ae6a742b683c7f74692dee45d6c17ff9, type: 2}
 --- !u!1 &8985074916239397053
 GameObject:
   m_ObjectHideFlags: 0
@@ -549,6 +639,7 @@ GameObject:
   - component: {fileID: 8989986783844326339}
   - component: {fileID: 8999923381707340241}
   - component: {fileID: 4843405937354474699}
+  - component: {fileID: 2977205474540868988}
   m_Layer: 0
   m_Name: SM_Bld_Background_Lrg_02
   m_TagString: Untagged
@@ -634,6 +725,23 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   probability: 0.5
+--- !u!114 &2977205474540868988
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8985074916239397053}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: abff6c0615b0146ca8c992fe345b58a5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  MyMaterials:
+  - {fileID: 2100000, guid: d032334ed988c420ab18e5778ccc40ab, type: 2}
+  - {fileID: 2100000, guid: c436aeac16c0e446bb169973051291ca, type: 2}
+  - {fileID: 2100000, guid: 828362473ab8f4605a55ff44f6d85083, type: 2}
+  - {fileID: 2100000, guid: ae6a742b683c7f74692dee45d6c17ff9, type: 2}
 --- !u!1 &9207104543331059079
 GameObject:
   m_ObjectHideFlags: 0
@@ -646,6 +754,7 @@ GameObject:
   - component: {fileID: 9202762348413910979}
   - component: {fileID: 9192970906870096775}
   - component: {fileID: 5729630316071355915}
+  - component: {fileID: 2063199804904273642}
   m_Layer: 0
   m_Name: SM_Bld_Background_Lrg_03
   m_TagString: Untagged
@@ -731,3 +840,20 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   probability: 0.5
+--- !u!114 &2063199804904273642
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9207104543331059079}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: abff6c0615b0146ca8c992fe345b58a5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  MyMaterials:
+  - {fileID: 2100000, guid: d032334ed988c420ab18e5778ccc40ab, type: 2}
+  - {fileID: 2100000, guid: c436aeac16c0e446bb169973051291ca, type: 2}
+  - {fileID: 2100000, guid: 828362473ab8f4605a55ff44f6d85083, type: 2}
+  - {fileID: 2100000, guid: ae6a742b683c7f74692dee45d6c17ff9, type: 2}
