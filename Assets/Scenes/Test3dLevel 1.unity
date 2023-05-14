@@ -464,6 +464,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _score: 0
   scoreUI: {fileID: 1082341898}
+  scores: []
   gameOverUI: {fileID: 1015054620}
   tutorialUI: {fileID: 1071389678}
   timeout2DUI: {fileID: 211253081}
@@ -684,7 +685,7 @@ GameObject:
   - component: {fileID: 1559021118}
   - component: {fileID: 1559021117}
   - component: {fileID: 1559021120}
-  - component: {fileID: 1559021121}
+  - component: {fileID: 1570956779}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -780,7 +781,7 @@ MonoBehaviour:
   far: 1000
   orthographicSize: 10
   aspect: 0
---- !u!114 &1559021121
+--- !u!114 &1570956779
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -1088,6 +1089,14 @@ PrefabInstance:
     - target: {fileID: 7346810440158419997, guid: 9514524aa0d0b4c7286f4ec935671c27, type: 3}
       propertyPath: m_Name
       value: GameCanvas
+      objectReference: {fileID: 0}
+    - target: {fileID: 7460999860378419581, guid: 9514524aa0d0b4c7286f4ec935671c27, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7460999860602897580, guid: 9514524aa0d0b4c7286f4ec935671c27, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 9514524aa0d0b4c7286f4ec935671c27, type: 3}
