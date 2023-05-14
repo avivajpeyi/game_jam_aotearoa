@@ -46,5 +46,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   yPos: 0
   initialTiles: 15
-  groundTile: {fileID: 7674184176368518835, guid: 6ef436700438f4c5884dc16d31c1a8f5, type: 3}
-  testMode: 1
+  tilesList: {fileID: 11400000, guid: c5379203bd8b546a0bee5fa15c48eeb0, type: 2}

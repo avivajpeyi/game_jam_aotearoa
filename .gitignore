@@ -5,6 +5,8 @@
 [Bb]uilds/
 [Ll]ogs/
 
+UserSettings/Layouts/CurrentMaximizeLayout.dwlt
+
 # ML AGENTS STUFF
 results
 *.onnx
