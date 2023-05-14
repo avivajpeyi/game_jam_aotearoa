@@ -13,6 +13,11 @@ public class GameManager : MonoBehaviour
     [SerializeField] List<float> scores = new List<float>();
     [SerializeField] Vector3 scoreboardOffset = new Vector3(900f, 0f, 0f);
 
+    // audio
+    [SerializeField] AudioSource bukBukBukBigurkSfx;
+    [SerializeField] AudioSource bigigurkSfx;
+    [SerializeField] AudioSource chickenSfx;
+
     public float Score
     {
         get { return this._score; }
@@ -211,12 +216,14 @@ public class GameManager : MonoBehaviour
     void Show2DPickupUI()
     {
         StartCoroutine(ShowTimerNotification(pickup2DUI, showPickupForTime));
+        bigigurkSfx.Play();
     }
 
 
     void Show3DPickupUI()
     {
         StartCoroutine(ShowTimerNotification(pickup3DUI, showPickupForTime));
+        bigigurkSfx.Play();
     }
 
     void Show2DTimerAlmostOut()
