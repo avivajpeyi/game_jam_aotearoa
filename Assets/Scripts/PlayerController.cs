@@ -147,7 +147,7 @@ public class PlayerController : MonoBehaviour
     public void SwitchTo2d()
     {
         // move the chumken up a bit
-        t.position = new Vector3(t.position.x, t.position.y + 1, t.position.z);
+        t.position = new Vector3(t.position.x, t.position.y + 5, t.position.z);
         canMoveSideways = false;
         canMoveLeft = false;
         canMoveRight = false;
