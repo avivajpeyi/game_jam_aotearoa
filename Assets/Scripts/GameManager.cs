@@ -24,6 +24,7 @@ public class GameManager : MonoBehaviour
     [SerializeField] bool preStart = true;
     [SerializeField] string scoreFormat = "000";
 
+    [SerializeField] float showPickupForTime = 0.8f;
     [SerializeField] GameObject pickup2DUI;
     [SerializeField] GameObject pickup3DUI;
     [SerializeField] GameObject timer2DalmostOutUI;
@@ -187,13 +188,13 @@ public class GameManager : MonoBehaviour
 
     void Show2DPickupUI()
     {
-        StartCoroutine(ShowTimerNotification(pickup2DUI, 1f));
+        StartCoroutine(ShowTimerNotification(pickup2DUI, showPickupForTime));
     }
 
 
     void Show3DPickupUI()
     {
-        StartCoroutine(ShowTimerNotification(pickup3DUI, 1f));
+        StartCoroutine(ShowTimerNotification(pickup3DUI, showPickupForTime));
     }
 
     void Show2DTimerAlmostOut()
