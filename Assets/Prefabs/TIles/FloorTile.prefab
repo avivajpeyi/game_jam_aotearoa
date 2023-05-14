@@ -482,6 +482,18 @@ PrefabInstance:
       propertyPath: m_Name
       value: FloorMesh
       objectReference: {fileID: 0}
+    - target: {fileID: 3841216538691459777, guid: ff9df047378d444bf90b5484a2e112bc, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3841216539497527495, guid: ff9df047378d444bf90b5484a2e112bc, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3841216540156559009, guid: ff9df047378d444bf90b5484a2e112bc, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 6339036898017914809, guid: ff9df047378d444bf90b5484a2e112bc, type: 3}
       propertyPath: m_RootOrder
       value: 0
