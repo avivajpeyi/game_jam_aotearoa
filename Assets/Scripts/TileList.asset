@@ -16,12 +16,14 @@ MonoBehaviour:
   - tile: {fileID: 7674184176368518835, guid: 6ef436700438f4c5884dc16d31c1a8f5, type: 3}
     probability: 1
   - tile: {fileID: 7674184176368518835, guid: 39ae3f65ecf554c6bab0289a4fe6e61a, type: 3}
-    probability: 0.8
+    probability: 1
   - tile: {fileID: 7674184176368518835, guid: 16cf006a3e73644bf827bf509a9b5ee7, type: 3}
-    probability: 0.8
+    probability: 1
   - tile: {fileID: 7674184176368518835, guid: 37ceec55febc943979b859e749cd0bff, type: 3}
-    probability: 0.8
+    probability: 1
   - tile: {fileID: 7674184176368518835, guid: f7fd5d11cf2f94fbfac7d57eb30761a8, type: 3}
-    probability: 0.8
+    probability: 1
   - tile: {fileID: 7674184176368518835, guid: e9f365d3a65d946839d010a4e023d840, type: 3}
-    probability: 0.4
+    probability: 1
+  - tile: {fileID: 7674184176368518835, guid: 405bb2b22974347c1b6d52f455d2bbfc, type: 3}
+    probability: 1
