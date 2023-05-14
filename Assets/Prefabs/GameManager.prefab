@@ -1,0 +1,83 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &7896860322002807232
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 7896860322002807234}
+  - component: {fileID: 7896860322002807235}
+  - component: {fileID: 7896860322002807237}
+  m_Layer: 0
+  m_Name: GameManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &7896860322002807234
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7896860322002807232}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 25.548454, y: 0, z: 119.59932}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &7896860322002807235
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7896860322002807232}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3c54e796f4390c64ca8e9acb58199e4b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _score: 0
+  scoreUI: {fileID: 0}
+  gameOverUI: {fileID: 0}
+  tutorialUI: {fileID: 0}
+  timeout2DUI: {fileID: 0}
+  timeout3DUI: {fileID: 0}
+  preStart: 1
+  scoreFormat: 000
+  pickup2DUI: {fileID: 0}
+  pickup3DUI: {fileID: 0}
+  timer2DalmostOutUI: {fileID: 0}
+  timer3DalmostOut: {fileID: 0}
+--- !u!114 &7896860322002807237
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7896860322002807232}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fc790022fef866a48b2ee7d54df33aab, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  TimerParameters:
+    Timer2DStartTime: 10
+    Timer3DStartTime: 5
+    TimerMaxTime: 12
+  PickupParameters:
+    Timer2DPickupMultiplyer: 1
+    Timer3DPickupMultiplyer: 1
+  ScoreParamters:
+    ScoreMultiplyer: 1
+  PlayerParameters:
+    PramSpeed: 1
+    JumpHeightMultiplyer: 1
