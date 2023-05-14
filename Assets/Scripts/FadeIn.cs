@@ -12,6 +12,11 @@ public class FadeIn : MonoBehaviour
     {
         // textDisplay = GetComponent<TextMeshProUGUI>();
         img = GetComponent<Image>();
+        if (img == null)
+        {
+            Debug.LogError("No image found");
+            return;
+        }
         StartCoroutine(FadeInTxt());
     }
  
