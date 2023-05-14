@@ -58,7 +58,7 @@ public class GameManager : MonoBehaviour
         ScriptableEvents.addTime2D += Show2DPickupUI;
         ScriptableEvents.addTime3D += Show3DPickupUI;
 
-
+        scoreboardTextUI.text = "";
 
     }
 
@@ -106,7 +106,6 @@ public class GameManager : MonoBehaviour
 
         if (gameOver)
         {
-            scores.Add(_score);
             timeAfterGameOver += Time.deltaTime;
             if (timeAfterGameOver > 1f && Input.anyKey)
             {
@@ -172,6 +171,7 @@ public class GameManager : MonoBehaviour
         timeout3DUI.SetActive(false);
         var test = scoreboardUI.transform as RectTransform;
         test.Translate(scoreboardOffset);
+        UpdateScoreboard();
     }
 
     void ShowTimeout3D()
@@ -180,6 +180,17 @@ public class GameManager : MonoBehaviour
         timeout2DUI.SetActive(false);
         var test = scoreboardUI.transform as RectTransform;
         test.Translate(-scoreboardOffset);
+        UpdateScoreboard();
+    }
+
+    void UpdateScoreboard()
+    {
+        scores.Add(_score);
+        scores.Sort();
+        for (int i = 0; i < scores.Count && i < 4; i++)
+        {
+            scoreboardTextUI.text += (i + 1) + ". " + scores[i].ToString("0") + "<br>";
+        }
     }
 
     IEnumerator ShowTimerNotification(GameObject uiElement, float howLongToShow)
