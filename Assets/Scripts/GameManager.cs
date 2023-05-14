@@ -170,23 +170,38 @@ public class GameManager : MonoBehaviour
         timeout2DUI.SetActive(false);
     }
 
+    IEnumerator ShowTimerNotification(GameObject uiElement)
+    {
+        float duration = 4f;
+        float currentTime = 0f;
+
+        uiElement.SetActive(true);
+        while (currentTime < duration)
+        {
+            yield return null;
+        }
+        uiElement.SetActive(false);
+        yield break;
+    }
+
     void Show2DPickupUI()
     {
-
+        ShowTimerNotification(pickup2DUI);
     }
+
 
     void Show3DPickupUI()
     {
-
+        ShowTimerNotification(pickup3DUI);
     }
 
     void Show2DTimerAlmostOut()
     {
-
+        ShowTimerNotification(timer2DalmostOutUI);
     }
 
     void Show3DTimerAlmostOut()
     {
-        
+        ShowTimerNotification(timer3DalmostOut);
     }
 }
