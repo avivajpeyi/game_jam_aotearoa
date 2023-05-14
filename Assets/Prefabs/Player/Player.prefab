@@ -327,6 +327,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5ab756e162da544d49dd3acf7c70cd31, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  horMoveSpeed: 1
   nudgeMode: 0
   distanceToCheck: 2
   isGroundedPtsFront:
@@ -613,6 +614,30 @@ MonoBehaviour:
   - {fileID: 2800000, guid: 627f3a89c841b4fbdb385f9e55494972, type: 3}
   defaultTexture: {fileID: 0}
   switchTime: 2
+--- !u!1 &1687300148530974516 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1471472251587006140, guid: 372fb3279751b4ca1a9f4b48751dff2b, type: 3}
+  m_PrefabInstance: {fileID: 216672771774022024}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1917781093
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1687300148530974516}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 716af37f0ec6e4c48bea1a239399d5e0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  material: {fileID: 2100000, guid: 1905c9b6415a94ea1985c9d40604203c, type: 2}
+  textures:
+  - {fileID: 2800000, guid: e9d21983ba9cd8d458c2bfc007311962, type: 3}
+  - {fileID: 2800000, guid: 6a2bf29eaf8f9d640bd42b7f0ab107bc, type: 3}
+  - {fileID: 2800000, guid: 5ab0f5d32eee7e246b1727de6b205277, type: 3}
+  defaultTexture: {fileID: 2800000, guid: e9d21983ba9cd8d458c2bfc007311962, type: 3}
+  switchTime: 0.05
 --- !u!4 &1687300149179970492 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 1471472250422227508, guid: 372fb3279751b4ca1a9f4b48751dff2b, type: 3}
