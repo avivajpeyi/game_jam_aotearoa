@@ -95,8 +95,8 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 0
   serializedVersion: 2
-  m_Size: {x: 1, y: 1, z: 1}
-  m_Center: {x: 0, y: 0, z: 0}
+  m_Size: {x: 1, y: 1.2686112, z: 2.2695227}
+  m_Center: {x: 0, y: 0.13430536, z: -0.10022545}
 --- !u!1 &4985331122568181477
 GameObject:
   m_ObjectHideFlags: 0
@@ -236,9 +236,9 @@ GameObject:
   - component: {fileID: 6473154312414460424}
   - component: {fileID: 6473154312414460427}
   - component: {fileID: 6473154312414460426}
-  - component: {fileID: 6473154312414460437}
   - component: {fileID: 2656571939093094450}
   - component: {fileID: 5401559587438879635}
+  - component: {fileID: 2743527228456192012}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -315,20 +315,6 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!136 &6473154312414460437
-CapsuleCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6473154312414460436}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  m_Radius: 0.5000001
-  m_Height: 2
-  m_Direction: 1
-  m_Center: {x: 0.000000059604645, y: 0, z: -0.00000008940697}
 --- !u!114 &2656571939093094450
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -372,6 +358,19 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 112
   m_CollisionDetection: 0
+--- !u!65 &2743527228456192012
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6473154312414460436}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 1.0000001, y: 2.6013527, z: 2.2695222}
+  m_Center: {x: 0.000000059604645, y: 0.30067635, z: -0.033408403}
 --- !u!1 &7434851599028626529
 GameObject:
   m_ObjectHideFlags: 0
@@ -498,8 +497,8 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 0
   serializedVersion: 2
-  m_Size: {x: 1, y: 1, z: 1}
-  m_Center: {x: 0, y: 0, z: 0}
+  m_Size: {x: 1, y: 1.3573098, z: 2.336339}
+  m_Center: {x: 0, y: 0.17865519, z: -0.06681681}
 --- !u!1001 &216672771774022024
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -611,6 +610,7 @@ MonoBehaviour:
   - {fileID: 2800000, guid: 5dae7e32735564ff1b723a83bad33b6a, type: 3}
   - {fileID: 2800000, guid: 62d9f3a20b8931844b6272bb73b6a605, type: 3}
   - {fileID: 2800000, guid: 627f3a89c841b4fbdb385f9e55494972, type: 3}
+  defaultTexture: {fileID: 0}
   switchTime: 2
 --- !u!4 &1687300149179970492 stripped
 Transform:

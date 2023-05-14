@@ -7,6 +7,10 @@ public class PramAnimation : MonoBehaviour
     public float tiltAmount = 30f;
     public float moveUpAmount = 1.5f;
 
+    
+    private Vector3 orig2dPos;
+    private Vector3 orig3dPos;
+    
     private Transform pramBody;
     private Transform pramWheels;
     private float originalRotation;
@@ -22,11 +26,20 @@ public class PramAnimation : MonoBehaviour
         originalRotation = pramBody.rotation.eulerAngles.z;
         _playerController = FindObjectOfType<PlayerController>();
         ScriptableEvents.endGame += Freeze;
+        
+        
+        ScriptableEvents.eventActivate3D+= IdlePos;
+        ScriptableEvents.eventActivate2D+= IdlePos;
+        
     }
+    
+    
 
     private void OnDestroy()
     {
         ScriptableEvents.endGame -= Freeze;
+        ScriptableEvents.eventActivate3D-= IdlePos;
+        ScriptableEvents.eventActivate2D-= IdlePos;
     }
 
     private void Update()
