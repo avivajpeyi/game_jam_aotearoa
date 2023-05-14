@@ -95,7 +95,10 @@ public class PlayerController : MonoBehaviour
 
 
         if (canJump && isGrounded && Input.GetKeyDown(KeyCode.Space))
+        {
+            Debug.Log("PlayerController: Jump!");
             Jump();
+        }
 
         if (transform.position.y < -5)
             Die();
@@ -162,13 +165,24 @@ public class PlayerController : MonoBehaviour
 
     void CheckGrounded()
     {
+
         // Just the floor layermake
-        LayerMask mask = 1<< LayerMask.GetMask("Floor");
-        bool front = Physics.Linecast(isGroundedPtsFront[0].position,
-            isGroundedPtsFront[1].position, mask);
-        bool back = Physics.Linecast(isGroundedPtsBack[0].position,
-            isGroundedPtsBack[1].position, mask);
-        isGrounded = front || back;
+        // LayerMask mask = 1<< LayerMask.GetMask("Floor");
+        // bool front = Physics.Linecast(isGroundedPtsFront[0].position,
+        //     isGroundedPtsFront[1].position, mask);
+        // bool back = Physics.Linecast(isGroundedPtsBack[0].position,
+        //     isGroundedPtsBack[1].position, mask);
+        // isGrounded = front || back;
+
+        if (Physics.Raycast(this.transform.position, -Vector3.up, 1f))
+        {
+            isGrounded = true;
+        } 
+        else 
+        {
+            isGrounded = false;
+        }
+
     }
 
     private void OnDrawGizmos()
