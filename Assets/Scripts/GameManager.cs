@@ -133,7 +133,6 @@ public class GameManager : MonoBehaviour
     void AddScore(float scoreToAdd)
     {
         _score += scoreToAdd;
-        bigigurkSfx.Play();
     }
 
     void ResetScore()
@@ -217,12 +216,14 @@ public class GameManager : MonoBehaviour
     void Show2DPickupUI()
     {
         StartCoroutine(ShowTimerNotification(pickup2DUI, showPickupForTime));
+        bigigurkSfx.Play();
     }
 
 
     void Show3DPickupUI()
     {
         StartCoroutine(ShowTimerNotification(pickup3DUI, showPickupForTime));
+        bigigurkSfx.Play();
     }
 
     void Show2DTimerAlmostOut()
