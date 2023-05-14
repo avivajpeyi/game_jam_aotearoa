@@ -20,7 +20,11 @@ public class Parallax : MonoBehaviour
         float temp = (came.transform.position.x * (1 - parallaxEffect));
         float distance = (came.transform.position.x * parallaxEffect);
 
-        transform.position = new Vector3(starpos + distance, transform.position.y, transform.position.z);
+        transform.position = new Vector3(
+            starpos + distance, 
+            transform.position.y, 
+            transform.position.z
+            );
 
         if (temp > starpos + lenght) starpos += lenght;
         else if (temp < starpos - lenght) starpos -= lenght;

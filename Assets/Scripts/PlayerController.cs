@@ -95,10 +95,14 @@ public class PlayerController : MonoBehaviour
         }
 
 
-        if (canJump && isGrounded && Input.GetKeyDown(KeyCode.Space))
+        if (canJump && isGrounded )
         {
-            Debug.Log("PlayerController: Jump!");
-            Jump();
+            bool keyPressed = Input.GetKeyDown(KeyCode.Space) || Input.GetKeyDown(KeyCode.UpArrow) || Input.GetKeyDown(KeyCode.W);
+            if (keyPressed)
+            {
+                Debug.Log("PlayerController: Jump!");
+                Jump();
+            }
         }
 
         if (transform.position.y < -5)
