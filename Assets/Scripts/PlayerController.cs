@@ -20,6 +20,7 @@ public class PlayerController : MonoBehaviour
     public static bool canMoveLeft;
     public static bool canMoveRight;
     private Transform t;
+    public float horMoveSpeed = 1.0f;
 
     public bool nudgeMode = true;
 
@@ -138,8 +139,12 @@ public class PlayerController : MonoBehaviour
             }
         }
 
-        rb.MovePosition(rb.position + forwardMove + hoirzMove);
+        Vector3 desiredPosition = t.position + forwardMove + hoirzMove;
+        Vector3 desiredVelocity = (desiredPosition - transform.position)/Time.deltaTime;
 
+        rb.MovePosition(rb.position + forwardMove + hoirzMove * horMoveSpeed);
+        
+        // rb.AddForce(desiredVelocity - rb.velocity, ForceMode.VelocityChange);
         rb.AddForce((currentGravityScale - 1) * rb.mass * Physics.gravity);
     }
 
@@ -147,7 +152,7 @@ public class PlayerController : MonoBehaviour
     public void SwitchTo2d()
     {
         // move the chumken up a bit
-        t.position = new Vector3(t.position.x, t.position.y + 5, t.position.z);
+        rb.MovePosition(new Vector3(t.position.x, t.position.y + 5, t.position.z));
         canMoveSideways = false;
         canMoveLeft = false;
         canMoveRight = false;
@@ -185,7 +190,13 @@ public class PlayerController : MonoBehaviour
             Debug.Log("PlayerController: front CheckGrounded: " + hit.collider.name);
         }
         
-        isGrounded = front || back;
+        bool another = Physics.Linecast(isGroundedPtsBack[0].position,
+            isGroundedPtsFront[1].position, out hit,mask);
+        
+        bool another2 = Physics.Linecast(isGroundedPtsBack[1].position,
+            isGroundedPtsFront[0].position, out hit,mask);
+
+        isGrounded = front || back || another || another2;
 
         Debug.Log(
             "PlayerController: CheckGrounded: " + isGrounded + " front: " + front + " back: " + back);
@@ -202,6 +213,8 @@ public class PlayerController : MonoBehaviour
         Gizmos.color = Color.magenta;
         Gizmos.DrawLine(isGroundedPtsFront[0].position, isGroundedPtsFront[1].position);
         Gizmos.DrawLine(isGroundedPtsBack[0].position, isGroundedPtsBack[1].position);
+        Gizmos.DrawLine(isGroundedPtsBack[0].position, isGroundedPtsFront[1].position);
+        Gizmos.DrawLine(isGroundedPtsBack[1].position, isGroundedPtsFront[0].position);
     }
 
     private void Jump()
@@ -215,10 +228,32 @@ public class PlayerController : MonoBehaviour
             currentGravityScale = gravityScale;
     }
 
+    
+    
+    
 
     public void Score()
     {
         ScriptableEvents.TriggerScoreEvent(scoreBase * Time.deltaTime);
+    }
+
+    public void OnCollisionEnter(Collision collision)
+    {
+        if (collision.transform.CompareTag("Obstacle"))
+        {
+            Debug.Log("Slow down!");
+            // slow horiz movement speed
+            horMoveSpeed = 0.1f;
+        }
+    }
+    
+    public void OnCollisionExit(Collision collision)
+    {
+        if (collision.transform.CompareTag("Obstacle"))
+        {
+            // reset horiz movement speed
+            horMoveSpeed = 1f;
+        }
     }
 
     public void Die()

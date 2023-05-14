@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.44657826, g: 0.49641263, b: 0.57481676, a: 1}
+  m_IndirectSpecularColor: {r: 0.4465788, g: 0.49641287, b: 0.5748173, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -190,6 +190,55 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 7460999860360650733, guid: 9514524aa0d0b4c7286f4ec935671c27, type: 3}
   m_PrefabInstance: {fileID: 7346810440621469197}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &475259153
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 475259155}
+  - component: {fileID: 475259154}
+  m_Layer: 7
+  m_Name: PostProcVol
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &475259154
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 475259153}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8b9a305e18de0c04dbd257a21cd47087, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  sharedProfile: {fileID: 11400000, guid: 240cd2c831ec8409ab784237bd827476, type: 2}
+  isGlobal: 1
+  blendDistance: 0
+  weight: 1
+  priority: 0
+--- !u!4 &475259155
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 475259153}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 12.199999, y: -1900.0708, z: 85.95328}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 8
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &534708411 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 4734956222728171961, guid: 9514524aa0d0b4c7286f4ec935671c27, type: 3}
@@ -317,8 +366,8 @@ Light:
   serializedVersion: 10
   m_Type: 1
   m_Shape: 0
-  m_Color: {r: 1, g: 0.95686275, b: 0.8392157, a: 1}
-  m_Intensity: 1
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Intensity: 0.05
   m_Range: 10
   m_SpotAngle: 30
   m_InnerSpotAngle: 21.802082
@@ -584,10 +633,6 @@ PrefabInstance:
       propertyPath: m_Camera
       value: 
       objectReference: {fileID: 1559021118}
-    - target: {fileID: 932391486787272846, guid: 4e3a613269cce432f9d5e6a5a55396a0, type: 3}
-      propertyPath: m_SortingOrder
-      value: -1000
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 4e3a613269cce432f9d5e6a5a55396a0, type: 3}
 --- !u!1001 &1156073265
@@ -645,42 +690,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: SpawnManager
       objectReference: {fileID: 0}
-    - target: {fileID: 6851454270921051977, guid: 1e80cd2b48a314f64a8cf7893106d2e4, type: 3}
-      propertyPath: tilesList
-      value: 
-      objectReference: {fileID: 11400000, guid: c5379203bd8b546a0bee5fa15c48eeb0, type: 2}
-    - target: {fileID: 6851454270921051977, guid: 1e80cd2b48a314f64a8cf7893106d2e4, type: 3}
-      propertyPath: groundTiles.Array.size
-      value: 7
-      objectReference: {fileID: 0}
-    - target: {fileID: 6851454270921051977, guid: 1e80cd2b48a314f64a8cf7893106d2e4, type: 3}
-      propertyPath: groundTiles.Array.data[0]
-      value: 
-      objectReference: {fileID: 7674184176368518835, guid: 6ef436700438f4c5884dc16d31c1a8f5, type: 3}
-    - target: {fileID: 6851454270921051977, guid: 1e80cd2b48a314f64a8cf7893106d2e4, type: 3}
-      propertyPath: groundTiles.Array.data[1]
-      value: 
-      objectReference: {fileID: 7674184176368518835, guid: 39ae3f65ecf554c6bab0289a4fe6e61a, type: 3}
-    - target: {fileID: 6851454270921051977, guid: 1e80cd2b48a314f64a8cf7893106d2e4, type: 3}
-      propertyPath: groundTiles.Array.data[2]
-      value: 
-      objectReference: {fileID: 7674184176368518835, guid: 16cf006a3e73644bf827bf509a9b5ee7, type: 3}
-    - target: {fileID: 6851454270921051977, guid: 1e80cd2b48a314f64a8cf7893106d2e4, type: 3}
-      propertyPath: groundTiles.Array.data[3]
-      value: 
-      objectReference: {fileID: 7674184176368518835, guid: 37ceec55febc943979b859e749cd0bff, type: 3}
-    - target: {fileID: 6851454270921051977, guid: 1e80cd2b48a314f64a8cf7893106d2e4, type: 3}
-      propertyPath: groundTiles.Array.data[4]
-      value: 
-      objectReference: {fileID: 7674184176368518835, guid: f7fd5d11cf2f94fbfac7d57eb30761a8, type: 3}
-    - target: {fileID: 6851454270921051977, guid: 1e80cd2b48a314f64a8cf7893106d2e4, type: 3}
-      propertyPath: groundTiles.Array.data[5]
-      value: 
-      objectReference: {fileID: 7674184176368518835, guid: e9f365d3a65d946839d010a4e023d840, type: 3}
-    - target: {fileID: 6851454270921051977, guid: 1e80cd2b48a314f64a8cf7893106d2e4, type: 3}
-      propertyPath: groundTiles.Array.data[6]
-      value: 
-      objectReference: {fileID: 7674184176368518835, guid: 6ef436700438f4c5884dc16d31c1a8f5, type: 3}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 1e80cd2b48a314f64a8cf7893106d2e4, type: 3}
 --- !u!1 &1559021116
@@ -695,6 +704,7 @@ GameObject:
   - component: {fileID: 1559021118}
   - component: {fileID: 1559021117}
   - component: {fileID: 1559021120}
+  - component: {fileID: 1570956779}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -790,30 +800,66 @@ MonoBehaviour:
   far: 1000
   orthographicSize: 10
   aspect: 0
---- !u!1 &1570956775 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 1687300148530974516, guid: 93462a6e6dca54454ba7f5f1c4b9bd9f, type: 3}
-  m_PrefabInstance: {fileID: 319152548}
-  m_PrefabAsset: {fileID: 0}
 --- !u!114 &1570956779
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1570956775}
+  m_GameObject: {fileID: 1559021116}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 716af37f0ec6e4c48bea1a239399d5e0, type: 3}
+  m_Script: {fileID: 11500000, guid: 948f4100a11a5c24981795d21301da5c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  material: {fileID: 2100000, guid: 1905c9b6415a94ea1985c9d40604203c, type: 2}
-  textures:
-  - {fileID: 2800000, guid: e9d21983ba9cd8d458c2bfc007311962, type: 3}
-  - {fileID: 2800000, guid: 6a2bf29eaf8f9d640bd42b7f0ab107bc, type: 3}
-  - {fileID: 2800000, guid: 5ab0f5d32eee7e246b1727de6b205277, type: 3}
-  defaultTexture: {fileID: 2800000, guid: e9d21983ba9cd8d458c2bfc007311962, type: 3}
-  switchTime: 0.05
+  volumeTrigger: {fileID: 1559021119}
+  volumeLayer:
+    serializedVersion: 2
+    m_Bits: 128
+  stopNaNPropagation: 1
+  finalBlitToCameraTarget: 0
+  antialiasingMode: 0
+  temporalAntialiasing:
+    jitterSpread: 0.75
+    sharpness: 0.25
+    stationaryBlending: 0.95
+    motionBlending: 0.85
+  subpixelMorphologicalAntialiasing:
+    quality: 2
+  fastApproximateAntialiasing:
+    fastMode: 0
+    keepAlpha: 0
+  fog:
+    enabled: 1
+    excludeSkybox: 1
+  debugLayer:
+    lightMeter:
+      width: 512
+      height: 256
+      showCurves: 1
+    histogram:
+      width: 512
+      height: 256
+      channel: 3
+    waveform:
+      exposure: 0.12
+      height: 256
+    vectorscope:
+      size: 256
+      exposure: 0.12
+    overlaySettings:
+      linearDepth: 0
+      motionColorIntensity: 4
+      motionGridSize: 64
+      colorBlindnessType: 0
+      colorBlindnessStrength: 1
+  m_Resources: {fileID: 11400000, guid: d82512f9c8e5d4a4d938b575d47f88d4, type: 2}
+  m_ShowToolkit: 0
+  m_ShowCustomSorter: 0
+  breakBeforeColorGrading: 0
+  m_BeforeTransparentBundles: []
+  m_BeforeStackBundles: []
+  m_AfterStackBundles: []
 --- !u!1 &1573466321 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 4734956223942626696, guid: 9514524aa0d0b4c7286f4ec935671c27, type: 3}

@@ -11,11 +11,10 @@ GameObject:
   - component: {fileID: 4748616525558288}
   - component: {fileID: 33573322789119926}
   - component: {fileID: 23565239101754876}
-  - component: {fileID: -5200612093203930848}
   - component: {fileID: 5207390770529876414}
   m_Layer: 6
   m_Name: Obstacle_garbage
-  m_TagString: Untagged
+  m_TagString: Obstacle
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -93,18 +92,6 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!114 &-5200612093203930848
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1141628610405278}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 33b4c2391b8074539ae412d6cf414a0c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!65 &5207390770529876414
 BoxCollider:
   m_ObjectHideFlags: 0

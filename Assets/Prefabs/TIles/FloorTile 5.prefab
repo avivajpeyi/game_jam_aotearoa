@@ -515,6 +515,18 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 7674184176368518839}
     m_Modifications:
+    - target: {fileID: 4808598737647134720, guid: 2199f789f1cf846e9b139252d0125460, type: 3}
+      propertyPath: m_Size.z
+      value: 3.2859411
+      objectReference: {fileID: 0}
+    - target: {fileID: 4808598737647134720, guid: 2199f789f1cf846e9b139252d0125460, type: 3}
+      propertyPath: m_Center.x
+      value: -0.0000009613652
+      objectReference: {fileID: 0}
+    - target: {fileID: 4808598737647134720, guid: 2199f789f1cf846e9b139252d0125460, type: 3}
+      propertyPath: m_Center.z
+      value: -0.49776208
+      objectReference: {fileID: 0}
     - target: {fileID: 5363287779211770145, guid: 2199f789f1cf846e9b139252d0125460, type: 3}
       propertyPath: m_Name
       value: Obstacle_PlasticBarrier
@@ -1453,6 +1465,18 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 7674184176368518839}
     m_Modifications:
+    - target: {fileID: 4808598737647134720, guid: 2199f789f1cf846e9b139252d0125460, type: 3}
+      propertyPath: m_Size.z
+      value: 3.197935
+      objectReference: {fileID: 0}
+    - target: {fileID: 4808598737647134720, guid: 2199f789f1cf846e9b139252d0125460, type: 3}
+      propertyPath: m_Center.x
+      value: -0.0000009613652
+      objectReference: {fileID: 0}
+    - target: {fileID: 4808598737647134720, guid: 2199f789f1cf846e9b139252d0125460, type: 3}
+      propertyPath: m_Center.z
+      value: 0.45376313
+      objectReference: {fileID: 0}
     - target: {fileID: 5363287779211770145, guid: 2199f789f1cf846e9b139252d0125460, type: 3}
       propertyPath: m_Name
       value: Obstacle_PlasticBarrier (1)
