@@ -47,7 +47,7 @@ public class FloorTile : MonoBehaviour
     private void OnTriggerExit(Collider other)
     {
         _spawner.SpawnTile(true);
-        Destroy(gameObject, 2);
+        Destroy(gameObject, 10);
     }
 
     Vector3 GetRandomPointInCollider()

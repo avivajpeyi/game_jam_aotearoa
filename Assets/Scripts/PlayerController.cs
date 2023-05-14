@@ -146,6 +146,8 @@ public class PlayerController : MonoBehaviour
 
     public void SwitchTo2d()
     {
+        // move the chumken up a bit
+        t.position = new Vector3(t.position.x, t.position.y + 1, t.position.z);
         canMoveSideways = false;
         canMoveLeft = false;
         canMoveRight = false;
@@ -165,24 +167,29 @@ public class PlayerController : MonoBehaviour
 
     void CheckGrounded()
     {
-
-        // Just the floor layermake
-        // LayerMask mask = 1<< LayerMask.GetMask("Floor");
-        // bool front = Physics.Linecast(isGroundedPtsFront[0].position,
-        //     isGroundedPtsFront[1].position, mask);
-        // bool back = Physics.Linecast(isGroundedPtsBack[0].position,
-        //     isGroundedPtsBack[1].position, mask);
-        // isGrounded = front || back;
-
-        if (Physics.Raycast(this.transform.position, -Vector3.up, 1f))
+        
+        LayerMask mask = LayerMask.GetMask("Floor");
+        bool front = Physics.Linecast(isGroundedPtsFront[0].position,
+            isGroundedPtsFront[1].position, out hit, mask); 
+        
+        if (front)
         {
-            isGrounded = true;
-        } 
-        else 
-        {
-            isGrounded = false;
+            Debug.Log("PlayerController: front CheckGrounded: " + hit.collider.name);
         }
+        
+        bool back = Physics.Linecast(isGroundedPtsBack[0].position,
+            isGroundedPtsBack[1].position, out hit,mask);
+        
+        if (back)
+        {
+            Debug.Log("PlayerController: front CheckGrounded: " + hit.collider.name);
+        }
+        
+        isGrounded = front || back;
 
+        Debug.Log(
+            "PlayerController: CheckGrounded: " + isGrounded + " front: " + front + " back: " + back);
+        
     }
 
     private void OnDrawGizmos()
