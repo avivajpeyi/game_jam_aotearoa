@@ -10,8 +10,7 @@ public class Pickup : MonoBehaviour
 
     bool isHidden = false;
     private Collider col;
-    private Renderer rend;
-    private Material m;
+    [SerializeField] Renderer[] rends;
 
 
     private void OnDestroy()
@@ -32,8 +31,6 @@ public class Pickup : MonoBehaviour
     public void Start()
     {
         col = GetComponent<Collider>();
-        rend = GetComponent<Renderer>();
-        m = rend.material;
 
 
         Hide();
@@ -64,14 +61,20 @@ public class Pickup : MonoBehaviour
     {
         isHidden = true;
         col.enabled = false;
-        rend.enabled = false;
+        foreach (var r in rends)
+        {
+            r.enabled = false;
+        }
     }
 
     void Show()
     {
         isHidden = false;
         col.enabled = true;
-        rend.enabled = true;
+        foreach (var r in rends)
+        {
+            r.enabled = true;
+        }
     }
 
 

@@ -49,6 +49,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   in3DMode: 0
+  rends:
+  - {fileID: 7717304171818837222}
+  - {fileID: 1741254065520789555}
 --- !u!135 &2194329908067708207
 SphereCollider:
   m_ObjectHideFlags: 0
