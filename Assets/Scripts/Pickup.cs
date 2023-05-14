@@ -6,86 +6,75 @@ using Random = System.Random;
 
 public class Pickup : MonoBehaviour
 {
-    bool in3DMode = false;
-    
+    [SerializeField] bool in3DMode = false;
+
     bool isHidden = false;
     private Collider col;
-    private Renderer rend;
-    private Material m;
+    [SerializeField] Renderer[] rends;
 
-    public GameObject orangeSide;
-    public GameObject blueSide;
 
     private void OnDestroy()
     {
         if (in3DMode)
         {
             ScriptableEvents.eventActivate2D -= Hide;
-            ScriptableEvents.eventActivate3D -= Show;    
+            ScriptableEvents.eventActivate3D -= Show;
         }
         else
         {
             ScriptableEvents.eventActivate2D -= Show;
-            ScriptableEvents.eventActivate3D -= Hide;    
+            ScriptableEvents.eventActivate3D -= Hide;
         }
     }
 
 
-    public void Initialise(bool isFor3d)
+    public void Start()
     {
         col = GetComponent<Collider>();
-        rend = GetComponent<Renderer>();
-        m = rend.material;
-        in3DMode = isFor3d;
-        
+
+
         Hide();
         if (GameManager.is3D && in3DMode)
         {
             Show();
         }
-        else if  (!GameManager.is3D && !in3DMode)
+        else if (!GameManager.is3D && !in3DMode)
         {
             Show();
         }
 
-        // hacky change the colour of the pickup to red if it's for the 3d timer
-        if (in3DMode)
-        {
-            m.color = Color.red;
-        }
-        else
-        {
-            m.color = Color.green;
-        }
-        
-        
+
         if (in3DMode)
         {
             ScriptableEvents.eventActivate2D += Hide;
-            ScriptableEvents.eventActivate3D += Show;    
+            ScriptableEvents.eventActivate3D += Show;
         }
         else
         {
             ScriptableEvents.eventActivate2D += Show;
-            ScriptableEvents.eventActivate3D += Hide;    
+            ScriptableEvents.eventActivate3D += Hide;
         }
-        
     }
-
 
 
     void Hide()
     {
         isHidden = true;
         col.enabled = false;
-        rend.enabled = false;
+        foreach (var r in rends)
+        {
+            r.enabled = false;
+        }
     }
 
     void Show()
     {
         isHidden = false;
         col.enabled = true;
-        rend.enabled = true;
+        foreach (var r in rends)
+        {
+            r.enabled = true;
+        }
     }
 
 
