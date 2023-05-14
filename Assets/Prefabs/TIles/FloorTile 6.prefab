@@ -1974,6 +1974,10 @@ PrefabInstance:
       value: Gantry 1
       objectReference: {fileID: 0}
     - target: {fileID: 6876747455458320436, guid: e9846f510f3b74a8095cb445829af852, type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 6876747455458320436, guid: e9846f510f3b74a8095cb445829af852, type: 3}
       propertyPath: m_TagString
       value: Obstacle
       objectReference: {fileID: 0}
