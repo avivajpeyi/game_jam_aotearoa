@@ -8,6 +8,7 @@ public class GameManager : MonoBehaviour
 {
     [SerializeField] float _score = 0;
     [SerializeField] TextMeshProUGUI scoreUI;
+    [SerializeField] List<float> scores = new List<float>();
 
     public float Score
     {
@@ -102,6 +103,7 @@ public class GameManager : MonoBehaviour
 
         if (gameOver)
         {
+            scores.Add(_score);
             timeAfterGameOver += Time.deltaTime;
             if (timeAfterGameOver > 1f && Input.anyKey)
             {
