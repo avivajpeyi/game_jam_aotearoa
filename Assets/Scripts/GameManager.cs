@@ -24,6 +24,10 @@ public class GameManager : MonoBehaviour
     [SerializeField] bool preStart = true;
     [SerializeField] string scoreFormat = "000";
 
+    [SerializeField] GameObject pickup2DUI;
+    [SerializeField] GameObject pickup3DUI;
+    [SerializeField] GameObject timer2DalmostOutUI;
+    [SerializeField] GameObject timer3DalmostOut;
 
 
     private float timeAfterGameOver = 0;
