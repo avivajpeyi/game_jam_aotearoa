@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.4465788, g: 0.49641287, b: 0.5748173, a: 1}
+  m_IndirectSpecularColor: {r: 0.44657826, g: 0.49641263, b: 0.57481676, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -329,6 +329,18 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 614052372}
     m_Modifications:
+    - target: {fileID: 2612348035858104254, guid: 57c79072dfd07734d848f436d8286510, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: -60
+      objectReference: {fileID: 0}
+    - target: {fileID: 2612348035858104254, guid: 57c79072dfd07734d848f436d8286510, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: -100
+      objectReference: {fileID: 0}
+    - target: {fileID: 2612348035858104255, guid: 57c79072dfd07734d848f436d8286510, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 2612348036123165317, guid: 57c79072dfd07734d848f436d8286510, type: 3}
       propertyPath: m_Pivot.x
       value: 0.5
@@ -416,6 +428,18 @@ PrefabInstance:
     - target: {fileID: 2612348036123165318, guid: 57c79072dfd07734d848f436d8286510, type: 3}
       propertyPath: m_Name
       value: TimerNotificationManager
+      objectReference: {fileID: 0}
+    - target: {fileID: 2612348037059445645, guid: 57c79072dfd07734d848f436d8286510, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 60
+      objectReference: {fileID: 0}
+    - target: {fileID: 2612348037059445645, guid: 57c79072dfd07734d848f436d8286510, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: -100
+      objectReference: {fileID: 0}
+    - target: {fileID: 2612348037059445646, guid: 57c79072dfd07734d848f436d8286510, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 57c79072dfd07734d848f436d8286510, type: 3}
