@@ -24,6 +24,7 @@ public class GameManager : MonoBehaviour
     [SerializeField] bool preStart = true;
     [SerializeField] string scoreFormat = "000";
 
+    [SerializeField] float showPickupForTime = 0.8f;
     [SerializeField] GameObject pickup2DUI;
     [SerializeField] GameObject pickup3DUI;
     [SerializeField] GameObject timer2DalmostOutUI;
@@ -50,8 +51,8 @@ public class GameManager : MonoBehaviour
 
         ScriptableEvents.almostOut2D += Show2DTimerAlmostOut;
         ScriptableEvents.almostOut3D += Show3DTimerAlmostOut;
-        ScriptableEvents.pickup2D += Show2DPickupUI;
-        ScriptableEvents.pickup3D += Show3DPickupUI;
+        ScriptableEvents.addTime2D += Show2DPickupUI;
+        ScriptableEvents.addTime3D += Show3DPickupUI;
 
 
 
@@ -73,8 +74,8 @@ public class GameManager : MonoBehaviour
         
         ScriptableEvents.almostOut2D -= Show2DTimerAlmostOut;
         ScriptableEvents.almostOut3D -= Show3DTimerAlmostOut;
-        ScriptableEvents.pickup2D -= Show2DPickupUI;
-        ScriptableEvents.pickup3D -= Show3DPickupUI;
+        ScriptableEvents.addTime2D -= Show2DPickupUI;
+        ScriptableEvents.addTime3D -= Show3DPickupUI;
     }
 
     
@@ -170,14 +171,15 @@ public class GameManager : MonoBehaviour
         timeout2DUI.SetActive(false);
     }
 
-    IEnumerator ShowTimerNotification(GameObject uiElement)
+    IEnumerator ShowTimerNotification(GameObject uiElement, float howLongToShow)
     {
-        float duration = 4f;
+        float duration = howLongToShow;
         float currentTime = 0f;
 
         uiElement.SetActive(true);
         while (currentTime < duration)
         {
+            currentTime += Time.deltaTime;
             yield return null;
         }
         uiElement.SetActive(false);
@@ -186,22 +188,22 @@ public class GameManager : MonoBehaviour
 
     void Show2DPickupUI()
     {
-        ShowTimerNotification(pickup2DUI);
+        StartCoroutine(ShowTimerNotification(pickup2DUI, showPickupForTime));
     }
 
 
     void Show3DPickupUI()
     {
-        ShowTimerNotification(pickup3DUI);
+        StartCoroutine(ShowTimerNotification(pickup3DUI, showPickupForTime));
     }
 
     void Show2DTimerAlmostOut()
     {
-        ShowTimerNotification(timer2DalmostOutUI);
+        StartCoroutine(ShowTimerNotification(timer2DalmostOutUI, 5f));
     }
 
     void Show3DTimerAlmostOut()
     {
-        ShowTimerNotification(timer3DalmostOut);
+        StartCoroutine(ShowTimerNotification(timer3DalmostOut, 5f));
     }
 }
