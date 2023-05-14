@@ -576,26 +576,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 2656571939093094450, guid: 93462a6e6dca54454ba7f5f1c4b9bd9f, type: 3}
-      propertyPath: nudgeMode
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 2656571939093094450, guid: 93462a6e6dca54454ba7f5f1c4b9bd9f, type: 3}
-      propertyPath: JumpCheckBox.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2656571939093094450, guid: 93462a6e6dca54454ba7f5f1c4b9bd9f, type: 3}
-      propertyPath: JumpCheckBox.y
-      value: -0.74
-      objectReference: {fileID: 0}
-    - target: {fileID: 2656571939093094450, guid: 93462a6e6dca54454ba7f5f1c4b9bd9f, type: 3}
-      propertyPath: JumpCheckBox.width
-      value: 30
-      objectReference: {fileID: 0}
-    - target: {fileID: 2656571939093094450, guid: 93462a6e6dca54454ba7f5f1c4b9bd9f, type: 3}
-      propertyPath: JumpCheckBox.height
-      value: 2
-      objectReference: {fileID: 0}
     - target: {fileID: 6473154312414460424, guid: 93462a6e6dca54454ba7f5f1c4b9bd9f, type: 3}
       propertyPath: m_RootOrder
       value: 3
@@ -643,10 +623,6 @@ PrefabInstance:
     - target: {fileID: 6473154312414460436, guid: 93462a6e6dca54454ba7f5f1c4b9bd9f, type: 3}
       propertyPath: m_Name
       value: Player
-      objectReference: {fileID: 0}
-    - target: {fileID: 7903096460512257075, guid: 93462a6e6dca54454ba7f5f1c4b9bd9f, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 0.27
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 93462a6e6dca54454ba7f5f1c4b9bd9f, type: 3}
