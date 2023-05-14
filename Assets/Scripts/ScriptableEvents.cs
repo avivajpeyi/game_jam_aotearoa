@@ -117,4 +117,24 @@ public class ScriptableEvents : ScriptableObject
             timeout3D();
         }
     }
+
+    public delegate void Pickup2D();
+    public static event Pickup2D pickup2D;
+    public static void Trigger2DPickup()
+    {
+        if (pickup2D != null)
+        {
+            pickup2D();
+        }
+    }
+
+    public delegate void Pickup3D();
+    public static event Pickup3D pickup3D;
+    public static void Trigger3DPickup()
+    {
+        if (pickup3D != null)
+        {
+            pickup3D();
+        }
+    }
 }
