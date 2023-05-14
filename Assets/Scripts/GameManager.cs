@@ -8,7 +8,10 @@ public class GameManager : MonoBehaviour
 {
     [SerializeField] float _score = 0;
     [SerializeField] TextMeshProUGUI scoreUI;
+    [SerializeField] GameObject scoreboardUI;
+    [SerializeField] TextMeshProUGUI scoreboardTextUI;
     [SerializeField] List<float> scores = new List<float>();
+    [SerializeField] Vector3 scoreboardOffset = new Vector3(900f, 0f, 0f);
 
     public float Score
     {
@@ -147,11 +150,13 @@ public class GameManager : MonoBehaviour
     {
         gameOverUI.SetActive(true);
         gameOver = true;
+        scoreboardUI.SetActive(true);
     }
 
     void Reset()
     {
         gameOverUI.SetActive(false);
+        scoreboardUI.SetActive(false);
     }
 
     void StartGame()
@@ -165,12 +170,16 @@ public class GameManager : MonoBehaviour
     {
         timeout2DUI.SetActive(true);
         timeout3DUI.SetActive(false);
+        var test = scoreboardUI.transform as RectTransform;
+        test.Translate(scoreboardOffset);
     }
 
     void ShowTimeout3D()
     {
         timeout3DUI.SetActive(true);
         timeout2DUI.SetActive(false);
+        var test = scoreboardUI.transform as RectTransform;
+        test.Translate(-scoreboardOffset);
     }
 
     IEnumerator ShowTimerNotification(GameObject uiElement, float howLongToShow)
