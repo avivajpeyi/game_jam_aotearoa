@@ -6,10 +6,12 @@ public class TextureChanger : MonoBehaviour
 {
     [SerializeField] private Material material;
     [SerializeField] private Texture[] textures;
+    [SerializeField] private Texture defaultTexture;
     [SerializeField] private float switchTime = 1f;
 
     private int currentTextureIndex = 0;
     private Coroutine switchCoroutine;
+    private bool isObjectActive = true;
 
     private void Start()
     {
@@ -23,8 +25,25 @@ public class TextureChanger : MonoBehaviour
             }
         }
 
+        // Store the default texture
+        defaultTexture = material.mainTexture;
+
         // Start switching textures
         StartSwitching();
+    }
+
+    private void OnEnable()
+    {
+        // Set the object as active
+        isObjectActive = true;
+        StartSwitching();
+    }
+
+    private void OnDisable()
+    {
+        // Set the object as inactive and reset the texture to default
+        isObjectActive = false;
+        ResetTexture();
     }
 
     private void StartSwitching()
@@ -35,8 +54,11 @@ public class TextureChanger : MonoBehaviour
             StopCoroutine(switchCoroutine);
         }
 
-        // Start the switch coroutine
-        switchCoroutine = StartCoroutine(SwitchTexturesCoroutine());
+        // Start the switch coroutine only if the object is active
+        if (isObjectActive)
+        {
+            switchCoroutine = StartCoroutine(SwitchTexturesCoroutine());
+        }
     }
 
     private IEnumerator SwitchTexturesCoroutine()
@@ -68,5 +90,10 @@ public class TextureChanger : MonoBehaviour
         switchTime = newSwitchTime;
         StartSwitching();
     }
-}
 
+    public void ResetTexture()
+    {
+        // Reset the texture to the default
+        material.mainTexture = defaultTexture;
+    }
+}
